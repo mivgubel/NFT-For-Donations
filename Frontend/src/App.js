@@ -1,5 +1,6 @@
 import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Pages
 import AdminDashboard from './Pages/Admin-Dashboard/admin-dashboard';
@@ -12,12 +13,12 @@ import Mint from './Pages/Mint/mint'
 import UserDashboard from './Pages/User-Dashboard/user-dashboard';
 
 //components
-import Navbar from "./Components/Navbar/navbar"
+import NavbarProject from "./Components/Navbar/navbar"
 
 function App() {
   return (
     <>
-      <Navbar/>
+      <NavbarProject />
       <Routes>
         <Route exact path="/" element={<Home />}/>
         <Route exact path="/admin-dashboard" element={<AdminDashboard />}/>
