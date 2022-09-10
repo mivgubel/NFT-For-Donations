@@ -1,0 +1,41 @@
+.btn { 
+  font-weight: bold;
+  width: 150px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(125.31deg, #457AFF 0%, #429DFF 47.92%, #3FBAFF 100%);
+}
+
+.container{ 
+  display: flex;
+  flex-direction: row;
+  margin: 5% 10% 10% 10%;
+  position: relative;
+}
+
+.description {
+  font-size: 16px;
+  font-family: 'Work Sans';
+  margin-top: 40px;
+  margin-bottom: 50px;
+  z-index: 2;
+  text-align: justify;
+}
+
+.img {
+  width: 460px;
+  z-index: 1;
+}
+
+.subContainer{
+  z-index: 2;
+  margin-right: 20px;
+}
+
+.title {
+  font-size: 70px;
+  color : #3F75FF !important;
+  font-weight : regular !important;
+  font-family: 'Work Sans' !important;
+}
+

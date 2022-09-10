@@ -18,7 +18,7 @@ import s from './navbar.module.css';
 import { CAUSE_SUB_PATH, HOME, ROUTES_WITH_SEARCH, USER_DASHBOARD } from '../../Utils/Constants/Routes';
 import WalletConnectBtn from '../Wallet-Connect-btn/wallet-connect-btn';
 import { NavLink } from 'react-router-dom';
-import { LOGO } from '../../Utils/Images';
+import { LOGO } from '../../Utils/Constants/Images';
 
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
@@ -92,15 +92,15 @@ const NavbarProject = () => {
 
   return(   
   <>
-    <Navbar collapseOnSelect expand="lg" className={darkMode ? "" : s.navAzul} bg={darkMode ? "dark" : "light"} variant={darkMode ? "dark" : "dark"}>
+    <Navbar collapseOnSelect expand="lg" className={darkMode ? s.darkNav : s.blueNav} bg={darkMode ? "dark" : "light"} variant={darkMode ? "dark" : "dark"}>
         <img className={s.logo} src={LOGO} alt='logo'/>
         <Navbar.Collapse id="responsive-navbar-nav"> 
-        <Nav className={"s.navContainer"}>
-          <NavLink className="nav-link" to={"#1"}>Find a cause</NavLink>
-          <NavLink className="nav-link" to={"#2"}>Developers</NavLink>
-          <NavLink className="nav-link" to={"#3"}>Blog</NavLink>
-          <NavLink className="nav-link" to={USER_DASHBOARD}>Dashboard</NavLink>
-        </Nav>
+          <Nav className={"s.navContainer"}>
+            <NavLink className="nav-link" to={HOME}>Home</NavLink>
+            <NavLink className="nav-link" to={"/AAAA"}>Find a cause</NavLink>
+            <NavLink className="nav-link" to={"/BBBB"}>Developers</NavLink>
+            <NavLink className="nav-link" to={USER_DASHBOARD}>Dashboard</NavLink>
+          </Nav>
         </Navbar.Collapse>
         <Form onChange={() => setDarkMode(!darkMode)}>
         <FormGroup >

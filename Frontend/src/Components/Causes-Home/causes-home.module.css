@@ -1,0 +1,27 @@
+.cards{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 40px;
+  display : flex;
+  justify-content: space-evenly
+}
+
+.container {
+  background-color: #F5F8FF !important;
+  margin-top: 40px;
+  padding-top: 40px;
+}
+
+.subContainer {
+  display: flex;
+  flex-direction: column !important;
+  margin: 5% 10% 0 10%;
+}
+
+.title {
+  font-size: 60px;
+  color : #3F75FF !important;
+  font-weight : regular !important;
+  font-family: 'Work Sans' !important;
+}
