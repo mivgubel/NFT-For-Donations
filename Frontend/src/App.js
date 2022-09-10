@@ -14,21 +14,31 @@ import UserDashboard from './Pages/User-Dashboard/user-dashboard';
 
 //components
 import NavbarProject from "./Components/Navbar/navbar"
+import {
+  ADMIN_DASHBOARD,
+  CAUSE,
+  CAUSES,
+  COLLECTION,
+  COLLECTION_ELEMENT,
+  HOME,
+  MINT,
+  USER_DASHBOARD
+} from './Utils/Constants/Routes';
 
 function App() {
   return (
     <>
       <NavbarProject />
       <Routes>
-        <Route exact path="/" element={<Home />}/>
-        <Route exact path="/admin-dashboard" element={<AdminDashboard />}/>
-        <Route exact path="/cause/:id" element={<Cause />}/>
-        <Route exact path="/cause" element={<Causes />}/>
-        <Route exact path="/collection" element={<Collection />}/>
-        <Route exact path="/collection/:id" element={<CollectionElement />}/>
-        <Route exact path="/mint/:id" element={<Mint />}/>
-        <Route exact path="/user-dashboard" element={<UserDashboard />}/>
-        <Route path="*" element={<Navigate to="/" />}/>
+        <Route exact path={ HOME } element={<Home />}/>
+        <Route exact path={ ADMIN_DASHBOARD } element={<AdminDashboard />}/>
+        <Route exact path={ CAUSE } element={<Cause />}/>
+        <Route exact path={ CAUSES } element={<Causes />}/>
+        <Route exact path={ COLLECTION } element={<Collection />}/>
+        <Route exact path={ COLLECTION_ELEMENT } element={<CollectionElement />}/>
+        <Route exact path={ MINT } element={<Mint />}/>
+        <Route exact path={ USER_DASHBOARD } element={<UserDashboard />}/>
+        <Route path="*" element={<Navigate to={ HOME } />}/>
       </Routes>
     </>
   );
