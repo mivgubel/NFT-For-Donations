@@ -1,0 +1,39 @@
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: green!important;
+}
+
+
+.hide {
+  display : none;
+}
+
+.logo {
+  width : 15%;
+  height : 50px;
+}
+.noFormat {
+  text-decoration: none;
+}
+
+.nav {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navContainer{
+  display: flex;
+  width: 60%;
+  flex-direction: row !important;
+  justify-content: space-between;
+}
+
+.navAzul {
+  background: linear-gradient(125.31deg, #457AFF 0%, #429DFF 47.92%, #3FBAFF 100%);
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-around;
+}

@@ -1,0 +1,8 @@
+.hide {
+  display: none;
+}
+
+.center {
+  height: 40px !important;
+  border-radius: 200px;
+}
