@@ -1,0 +1,16 @@
+<mxfile host="65bd71144e">
+    <diagram id="vmK-c9xatdVAbkiFAhr3" name="Page-1">
+        <mxGraphModel dx="896" dy="520" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Smart Contracts:&lt;br&gt;&lt;br&gt;1.-&amp;nbsp; Necesitamos un contrato que deplogue contratos de NFT para cada coleccion que se cree" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="300" width="870" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Plataforma:&lt;br&gt;&lt;br&gt;1.- Generaremos varias colecciones de NFTs que se pondran a la venta en nuestra plataforma .&lt;br&gt;2.- La gente se puede conectar a la plataforma y comprar/mintear uno o mas NFTs. (ENS, unstoppable domains)&lt;br&gt;3.- El 50% del costo de la coleccion se donara a la plataforma y el otro 50% se pondra a stakear en Ave de esta forma se genera un rendimiento mensual con esta donacion.&lt;br&gt;4.- El interes generado se repartira 50% a la causa y otro 50% al donador, en la plataforma se le dara la opcion al usuario de decidir si donara todos los rendimientos o se quedara con su parte.&lt;br&gt;&lt;br&gt;En Nuestra plataforma los usuarios podran ver la causa a la que donaron, y los rendimientos que estan generando, cada mes se pagaran las rendimientos&lt;br&gt;al usuario y a la causa. (tal vez superfluid)&lt;br&gt;&lt;br&gt;deployar en polygon y otras cadenas evm con Avee que patrocinen premios en el hackaton, almacenar la metadata del nft en IPFS&lt;br&gt;&lt;br&gt;Pantallas:&lt;br&gt;&lt;br&gt;1.- Login&lt;br&gt;2.- datos de la causa individual&lt;br&gt;3.- dashboard usuario para que vea sus rendimientos." style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="20" width="880" height="270" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
