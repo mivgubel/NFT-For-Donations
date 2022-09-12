@@ -8,4 +8,14 @@
   owner_address: '0x105f83C74aD66776e317ABa4AeC1FB392cCa7c37',
   name: 'Cruz Roja Mexicana',
   symbol: 'CRM'
+},
+
+{
+  response: 'OK',
+  chain: 'rinkeby',
+  transaction_hash: '0x94094ead4c470670bb3ffb7b557b9290a985f24176c6e386a7ee2cce53686e11',
+  transaction_external_url: 'https://rinkeby.etherscan.io/tx/0x94094ead4c470670bb3ffb7b557b9290a985f24176c6e386a7ee2cce53686e11',
+  owner_address: '0x105f83C74aD66776e317ABa4AeC1FB392cCa7c37',
+  name: 'Cruz Roja Mexicana',
+  symbol: 'CRM'
 }
