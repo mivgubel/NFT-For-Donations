@@ -1,5 +1,12 @@
+/*
+* https://docs.nftport.xyz/docs/nftport/ZG9jOjQ0MDgxNDc3-how-to-create-your-nft-collection#step-3-deploy-a-collection-contract
+* 
+* servicio que crea y despliga un contrato de coleccion de NFTs
+*/
+
 const axios = require('axios').default;
-const dotenv = require("dotenv").config();
+require("dotenv").config();
+//const getCollection = require("./getCollection.js");
 
 const collection = (req,res) => {
       var options = {
@@ -25,8 +32,11 @@ const collection = (req,res) => {
       
       axios.request(options).then(function (response) {
         console.log(response.data);
-      }).catch(function (error) {
-        console.error("Error MSG:",error);
+        res.json(response.data);
+       // getCollection(response.data.transaction_hash);
+      }).catch(function (err) {
+        console.error("Error MSG:",err);
+        res.status(500).json({error: err});
       });
 
     }
