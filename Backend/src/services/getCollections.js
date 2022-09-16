@@ -11,17 +11,15 @@ const getCollections = (req, res) => {
     var options = {
         method: 'GET',
         url: 'https://api.nftport.xyz/v0/me/contracts/collections',
-        params: {chain: 'rinkeby'},
+        params: {chain: 'polygon'},
         headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY}
       };
       
       axios.request(options).then(function (response) {
-        console.log(response.data);
         res.json(response.data);
       }).catch(function (e) {
-        console.error(e);
         res.status(500).json({error: e});
       });
 }
 
-module.exports= getCollections;
+module.exports = getCollections;

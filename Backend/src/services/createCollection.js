@@ -14,7 +14,7 @@ const collection = (req,res) => {
         url: 'https://api.nftport.xyz/v0/contracts/collections',
         headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY},
         data: {
-          chain: 'rinkeby',
+          chain: 'polygon',
           name: req.body.name,
           symbol: req.body.simbol,
           max_supply: req.body.maxSupply,
@@ -31,11 +31,9 @@ const collection = (req,res) => {
       };
       
       axios.request(options).then(function (response) {
-        console.log(response.data);
         res.json(response.data);
        // getCollection(response.data.transaction_hash);
       }).catch(function (err) {
-        console.error("Error MSG:",err);
         res.status(500).json({error: err});
       });
 
