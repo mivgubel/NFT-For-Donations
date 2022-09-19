@@ -15,7 +15,7 @@ import Form from 'react-bootstrap/Form';
 import s from './navbar.module.css';
 
 //Constants
-import { CAUSE_SUB_PATH, HOME, ROUTES_WITH_SEARCH, USER_DASHBOARD } from '../../Utils/Constants/Routes';
+import { CAUSES, CAUSE_SUB_PATH, HOME, ROUTES_WITH_SEARCH, USER_DASHBOARD } from '../../Utils/Constants/Routes';
 import WalletConnectBtn from '../Wallet-Connect-btn/wallet-connect-btn';
 import { NavLink } from 'react-router-dom';
 import { LOGO } from '../../Utils/Constants/Images';
@@ -29,16 +29,6 @@ const NavbarProject = () => {
   //States
   const [darkMode, setDarkMode] = useState(false);
 
-
-
-  const validaPantallaActual = () => {
-    const pantallaActual = window.location.pathname;
-    if (ROUTES_WITH_SEARCH.includes(pantallaActual) || pantallaActual.includes(CAUSE_SUB_PATH)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
   const handleChange = () => {
     setDarkMode(!darkMode);
   }
@@ -97,7 +87,7 @@ const NavbarProject = () => {
         <Navbar.Collapse id="responsive-navbar-nav"> 
           <Nav className={"s.navContainer"}>
             <NavLink className="nav-link" to={HOME}>Home</NavLink>
-            <NavLink className="nav-link" to={"/AAAA"}>Find a cause</NavLink>
+            <NavLink className="nav-link" to={CAUSES}>Find a cause</NavLink>
             <NavLink className="nav-link" to={"/BBBB"}>Developers</NavLink>
             <NavLink className="nav-link" to={USER_DASHBOARD}>Dashboard</NavLink>
           </Nav>

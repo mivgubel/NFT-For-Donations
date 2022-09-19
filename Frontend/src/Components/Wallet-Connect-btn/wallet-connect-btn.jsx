@@ -56,6 +56,7 @@ const WalletConnectBtn = () => {
   // }
 
   const actualChainWallet = (chainId) => {
+    localStorage.setItem("chain", chainId);
     switch(chainId) {
       //Ethereum
       case '1':

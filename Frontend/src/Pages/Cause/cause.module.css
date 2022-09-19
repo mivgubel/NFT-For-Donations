@@ -1,0 +1,25 @@
+.collectionImg {
+  width: 300px;
+}
+
+.container{
+  margin : 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description {
+  width: 90%;
+  text-align: justify;
+  margin-right: 10px;
+  margin-top: 60px;
+}
+
+.btnContainer{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: space-evenly;
+}
