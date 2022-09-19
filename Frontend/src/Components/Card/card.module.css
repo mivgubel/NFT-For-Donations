@@ -22,6 +22,7 @@
   text-align: center;
   font-size :15px;
   font-weight :regular;
+  text-decoration: none;
 }
 
 .subtitle {
@@ -55,4 +56,8 @@
 
 .stateSoon {
   background: linear-gradient(125.31deg, #FF993A 0%, #FF9F3C 47.92%, #FFA73F 100%);
+}
+.container {
+  display:flex;
+  flex-direction: column;
 }

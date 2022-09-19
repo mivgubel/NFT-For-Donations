@@ -13,10 +13,12 @@ import Form from 'react-bootstrap/Form';
 
 //style
 import s from './card.module.css';
+import { NavLink } from 'react-router-dom';
+import { CAUSES } from '../../Utils/Constants/Routes';
 
 //Constants
 
-const CauseCard = ({image, title, subtitle, state}) => {
+const CauseCard = ({id, image, title, subtitle, state}) => {
 
   const validaLive = (state) => {
     return state === 'Live';
@@ -28,7 +30,7 @@ const CauseCard = ({image, title, subtitle, state}) => {
         <img className={s.img} src={image} alt={title}/>
         <p className={validaLive(state) ? s.stateLive : s.stateSoon}>{state}</p>
       </div>
-      <h5 className={s.title}>{title}</h5>
+      <NavLink className={s.title} to={`${CAUSES}/${id}`}>{title}</NavLink>
       <h6 className={s.subtitle}>{subtitle}</h6>
     </div>
   )

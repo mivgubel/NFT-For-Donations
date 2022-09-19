@@ -15,7 +15,7 @@ import Form from 'react-bootstrap/Form';
 import s from './causes-home.module.css';
 
 //Constants
-import { CAUSE_SUB_PATH, HOME, ROUTES_WITH_SEARCH, USER_DASHBOARD } from '../../Utils/Constants/Routes';
+import { CAUSES, CAUSE_SUB_PATH, HOME, ROUTES_WITH_SEARCH, USER_DASHBOARD } from '../../Utils/Constants/Routes';
 import WalletConnectBtn from '../Wallet-Connect-btn/wallet-connect-btn';
 import { NavLink } from 'react-router-dom';
 import { ABOUT_IMAGE, LOGO } from '../../Utils/Constants/Images';
@@ -27,9 +27,9 @@ import { CAUSES_INFO } from '../../Utils/Constants/causes';
 
 const CausesHome = () => {
   const cards = CAUSES_INFO;
-const allCards = cards.map( (e, index) => 
-  <CauseCard key={index} image={e.image} title={e.title} subtitle={e.subtitle} state={e.state}/>
-)
+  const allCards = cards.map( (e, index) => 
+    <CauseCard key={index} id={e.id} image={e.image} title={e.title} subtitle={e.subtitle} state={e.state}/>
+  )
   return(   
     <div className={s.container}>
       <div className={s.subContainer}>

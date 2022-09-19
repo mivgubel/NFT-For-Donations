@@ -36,7 +36,7 @@ function App() {
         <Route exact path={ CAUSES } element={<Causes />}/>
         <Route exact path={ COLLECTION } element={<Collection />}/>
         <Route exact path={ COLLECTION_ELEMENT } element={<CollectionElement />}/>
-        <Route exact path={ MINT } element={<Mint />}/>
+        <Route exact path={ `${MINT}/:id` } element={<Mint />}/>
         <Route exact path={ USER_DASHBOARD } element={<UserDashboard />}/>
         <Route path="*" element={<Navigate to={ HOME } />}/>
       </Routes>

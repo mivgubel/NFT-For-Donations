@@ -5,19 +5,21 @@ import s from './causes.module.css';
 
 export default function Causas() {
   const causes = CAUSES_INFO;
+  
   return(   
     <div>
       {
         causes.map(cause => {
+          const {id, image, title, description} = cause;
           return (
-            <div className={s.container}>
+            <div key={id} className={s.container}>
               <div className={s.titleAndImg}>
-                <p className="title">{cause.title}</p>
-                <img className={s.img} src={cause.image} alt={cause.title}/>
+                <p className="title">{title}</p>
+                <img className={s.img} src={image} alt={title}/>
               </div>
               <div className={s.description}>
-                <p >{cause.description.slice(0,300) + '...'}</p>
-                <NavLink className={s.info} to={`${CAUSES}/${cause.id}`}>More Info</NavLink>
+                <p >{description.slice(0,300) + '...'}</p>
+                <NavLink className={s.info} to={`${CAUSES}/${id}`}>More Info</NavLink>
               </div>
             </div>
           )
