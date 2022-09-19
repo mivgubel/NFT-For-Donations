@@ -29,16 +29,6 @@ const NavbarProject = () => {
   //States
   const [darkMode, setDarkMode] = useState(false);
 
-
-
-  const validaPantallaActual = () => {
-    const pantallaActual = window.location.pathname;
-    if (ROUTES_WITH_SEARCH.includes(pantallaActual) || pantallaActual.includes(CAUSE_SUB_PATH)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
   const handleChange = () => {
     setDarkMode(!darkMode);
   }

@@ -1,0 +1,33 @@
+.container {
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mintDiv{
+  display: flex;
+  flex-direction: row;
+}
+
+.counter{
+  margin-right: 10px;
+  width: 120px;
+}
+
+.info {
+  width:38px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  margin: 2px;
+}
+
+.icon {
+  width:100% !important;
+}
+
+.checkContainer{
+  display: flex;
+  flex-direction: row;
+}

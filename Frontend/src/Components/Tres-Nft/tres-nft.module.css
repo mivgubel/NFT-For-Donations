@@ -1,0 +1,9 @@
+.collectionImg {
+  width: 300px;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}

@@ -4,6 +4,7 @@ import s from './cause.module.css';
 //Bootstrap
 import Button from 'react-bootstrap/Button';
 import { CAUSES, MINT } from '../../Utils/Constants/Routes';
+import TresNft from '../../Components/Tres-Nft/tres-nft';
 export default function Cause() {
   const causes = CAUSES_INFO;
   const { id }= useParams();
@@ -14,14 +15,7 @@ export default function Cause() {
       <p className="title">{title}</p>
       <p className={s.description}>{description}</p>
       <p className="title">Collection</p>
-      <div className={s.imgDiv}>
-        {
-          causes.map( (cause, index) => {
-            const {collection} = cause;
-            return(<img className={s.collectionImg} key={index} src={collection[index]} alt={`Img ${index}`}/>)
-          })
-        }
-      </div>
+      <TresNft causes={causes}/>
       <div className={s.btnContainer}>
       <NavLink className={state === "Soon" ? "hide" : ""} to={`${MINT}/${id}`}>
         <Button className="generalBtn" variant="primary">Mint Collection</Button>

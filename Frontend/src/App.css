@@ -50,6 +50,7 @@
   height: 50px;
   border-radius: 12px;
   background: linear-gradient(125.31deg, #457AFF 0%, #429DFF 47.92%, #3FBAFF 100%);
+  color: white ;
 }
 
 .generalBtn:hover {
@@ -59,3 +60,11 @@
 .hide {
   display: none;
 }
+
+.bigTitle {
+  font-size: 70px;
+  color : #3F75FF !important;
+  font-weight : regular !important;
+  font-family: 'Work Sans' !important;
+}
+

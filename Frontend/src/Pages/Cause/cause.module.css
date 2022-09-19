@@ -9,12 +9,6 @@
   align-items: center;
 }
 
-.imgDiv {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-}
-
 .description {
   width: 90%;
   text-align: justify;
