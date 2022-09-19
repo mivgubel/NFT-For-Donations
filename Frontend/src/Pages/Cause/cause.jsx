@@ -7,7 +7,7 @@ import { CAUSES, MINT } from '../../Utils/Constants/Routes';
 export default function Cause() {
   const causes = CAUSES_INFO;
   const { id }= useParams();
-  const {image, title, description} = causes[id - 1];
+  const {image, title, description, state} = causes[id - 1];
   return(   
     <div className={s.container}>
       <img src={image} alt={title}/>
@@ -23,7 +23,7 @@ export default function Cause() {
         }
       </div>
       <div className={s.btnContainer}>
-      <NavLink className="nav-link" to={`${MINT}/${id}`}>
+      <NavLink className={state === "Soon" ? "hide" : ""} to={`${MINT}/${id}`}>
         <Button className="generalBtn" variant="primary">Mint Collection</Button>
       </NavLink>
       <NavLink className="nav-link" to={CAUSES}>

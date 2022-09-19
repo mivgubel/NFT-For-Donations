@@ -55,3 +55,7 @@
 .generalBtn:hover {
   font-weight: bold;
 }
+
+.hide {
+  display: none;
+}
