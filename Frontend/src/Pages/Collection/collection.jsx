@@ -1,5 +1,7 @@
 //React
 import { NavLink, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 //Style
 import s from './collection.module.css';
@@ -9,13 +11,19 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
 //Constants
-import { CAUSES_INFO } from '../../Utils/Constants/causes';
 import { COLLECTION, COLLECTION_ELEMENT } from '../../Utils/Constants/Routes';
+
+// Redux actions
+import { getAllCauses } from '../../redux/actions'
 
 export default function Collection() {
   const { container, table, nftImage} = s;
   const { id }= useParams();
-  const causes = CAUSES_INFO;
+  const dispatch = useDispatch();
+  useEffect(()=> {
+    dispatch(getAllCauses());
+  }, [ dispatch, id ]);
+  const causes = useSelector(state => state.allCauses);
   const cause = causes[id - 1];
   const { collection } = cause;
   const COLUMNS = ["NFT", "Quantity Total", "Quantity Minted"];

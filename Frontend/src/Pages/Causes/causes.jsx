@@ -1,15 +1,25 @@
 //React
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 //Style
 import s from './causes.module.css';
 
 //constants
-import { CAUSES_INFO } from '../../Utils/Constants/causes';
 import { CAUSES } from '../../Utils/Constants/Routes';
 
+// Redux actions
+import { getAllCauses } from '../../redux/actions';
+
 export default function Causas() {
-  const causes = CAUSES_INFO;
+    //Dispatch
+    const dispatch = useDispatch();
+    useEffect(()=> {
+      dispatch(getAllCauses());
+    }, [ dispatch ]);
+    const causes = useSelector(state => state.allCauses);
+
   return (
     <div>
       {

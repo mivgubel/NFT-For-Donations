@@ -1,5 +1,7 @@
 //React
 import { NavLink, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 //Style
 import s from './cause.module.css';
@@ -10,14 +12,22 @@ import { CAUSES, COLLECTION } from '../../Utils/Constants/Routes';
 import TresNft from '../../Components/Tres-Nft/tres-nft';
 import MintButton from '../../Components/Mint-Button/mint-button';
 
-//constants
-import { CAUSES_INFO } from '../../Utils/Constants/causes';
+// Redux actions
+import { getAllCauses } from '../../redux/actions'
+
 
 export default function Cause() {
-  const causes = CAUSES_INFO;
   const { descriptionStyle, buttonContainer, container } = s;
-  const { id }= useParams();
+  const { id } = useParams();
+
+  //Dispatch
+  const dispatch = useDispatch();
+  useEffect(()=> {
+    dispatch(getAllCauses());
+  }, [ dispatch, id ]);
+  const causes = useSelector(state => state.allCauses);
   const { image, title, description } = causes[id - 1];
+
   return(   
     <div className={container}>
       <img src={image} alt={title}/>

@@ -1,7 +1,8 @@
 //React
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 //Bootstrap
 import Button from 'react-bootstrap/Button';
@@ -16,16 +17,22 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 //Style
 import s from './mint.module.css';
 
-//Constants
-import { CAUSES_INFO } from '../../Utils/Constants/causes';
-
 //Local Components
 import TresNft from '../../Components/Tres-Nft/tres-nft';
+
+// Redux actions
+import { getAllCauses } from '../../redux/actions'
 
 export default function Mint() {
   const {container, checkContainer, info, mintDiv, counter, icon} = s;
   const { id }= useParams();
-  const causes = CAUSES_INFO;
+  //Dispatch
+  const dispatch = useDispatch();
+  useEffect(()=> {
+    dispatch(getAllCauses());
+  }, [ dispatch, id ]);
+  const causes = useSelector(state => state.allCauses);
+
   const {title,  state} = causes[id - 1];
 
   const [donateAll, setDonateAll] = useState(false);
