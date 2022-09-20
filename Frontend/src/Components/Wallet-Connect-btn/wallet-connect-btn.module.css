@@ -1,8 +1,5 @@
-.hide {
-  display: none;
-}
 
-.center {
+.buttonStyle {
   height: 40px !important;
   border-radius: 200px;
 }

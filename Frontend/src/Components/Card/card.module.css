@@ -1,5 +1,5 @@
 
-.img  {
+.imageStyle  {
   height: 300px;
   width: 210px;
   border-radius: 40px;
@@ -16,7 +16,7 @@
   z-index: 1;
 }
 
-.title {
+.titleStyle {
   margin-top: 15px;
   color : #3F75FF;
   text-align: center;
@@ -25,14 +25,14 @@
   text-decoration: none;
 }
 
-.subtitle {
+.subtitleStyle {
   color : #A1A1A1;
   text-align: center;
   font-size : 12px;
   font-weight :regular;
 }
 
-.imgDiv {
+.imageContainer {
   position: relative;
 }
 

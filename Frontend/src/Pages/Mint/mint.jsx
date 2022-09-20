@@ -1,30 +1,39 @@
-import s from './mint.module.css';
-import { NavLink, useParams } from 'react-router-dom';
-import { CAUSES_INFO } from '../../Utils/Constants/causes';
-import TresNft from '../../Components/Tres-Nft/tres-nft';
+//React
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
+
+//Bootstrap
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
+//Icons
 import { BsFillInfoCircleFill } from "react-icons/bs";
 
-import { useState } from 'react';
+//Style
+import s from './mint.module.css';
+
+//Constants
+import { CAUSES_INFO } from '../../Utils/Constants/causes';
+
+//Local Components
+import TresNft from '../../Components/Tres-Nft/tres-nft';
 
 export default function Mint() {
+  const {container, checkContainer, info, mintDiv, counter, icon} = s;
   const { id }= useParams();
   const causes = CAUSES_INFO;
-  const {title, description, image} = causes[id - 1];
+  const {title,  state} = causes[id - 1];
 
   const [donateAll, setDonateAll] = useState(false);
   const [nftCount, setNftCount] = useState(1);
+
   //TODO INTERACTUAR CON REDUX
-  const [btnText, setBtnText] = useState("Mint");
   const totalNfts = 1000;
   const minted = 500;
-  
 
   const onCheck = () => {
     setDonateAll(!donateAll);
@@ -42,11 +51,11 @@ export default function Mint() {
   }
   
   return(   
-    <div className={s.container}>
+    <div className={container}>
       <p className="bigTitle">Cause {title} Mint</p>
-      <TresNft causes={causes}/>
+      <TresNft id={id} causes={causes}/>
       <hr/>
-      <div className={s.checkContainer}>
+      <div className={checkContainer}>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check onChange={onCheck} type="checkbox" label="Donate All Profit" />
         </Form.Group>
@@ -59,13 +68,13 @@ export default function Mint() {
             </Tooltip>
           }
         >
-        <Button className={s.info}><BsFillInfoCircleFill className={s.icon}/></Button>
+        <Button className={info}><BsFillInfoCircleFill className={icon}/></Button>
         </OverlayTrigger>
       </div>
       
       <p>{minted + "/"  + totalNfts} Minted </p>
-      <div className={s.mintDiv}>
-        <InputGroup className={s.counter}>
+      <div className={mintDiv}>
+        <InputGroup className={counter}>
           <Form.Control
             value={nftCount}
             placeholder=""
@@ -75,7 +84,7 @@ export default function Mint() {
           <Button onClick={() => change(-1)} variant="outline-secondary">-</Button>
           <Button onClick={() => change(+1)} variant="outline-secondary">+</Button>
         </InputGroup>
-        <Button onClick={mint} className="generalBtn" variant="secondary">{btnText}</Button>
+        <Button onClick={mint} className="generalButton" variant="secondary" disabled={state === 'Soon'}>Mint</Button>
       </div>
     </div>
   )

@@ -1,0 +1,25 @@
+.nftImage {
+  width: 350px;
+}
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10%;
+}
+
+
+.descriptionStyle {
+  font-size: 16px;
+  font-family: 'Work Sans';
+  margin-top: 40px;
+  margin-bottom: 50px;
+  z-index: 2;
+  text-align: justify;
+}

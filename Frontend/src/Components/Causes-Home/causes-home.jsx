@@ -1,27 +1,27 @@
 //React
-import React, {useState, useEffect } from 'react';
-
-//web3
-import {ethers} from 'ethers';
-
+import React from 'react';
 
 //style
 import s from './causes-home.module.css';
 
+//Components
 import CauseCard from '../Card/card';
+
+//Constants
 import { CAUSES_INFO } from '../../Utils/Constants/causes';
 
 const CausesHome = () => {
+  const {container, subContainer, title, cardsContainer} = s;
   const cards = CAUSES_INFO;
-  const allCards = cards.map( (e, index) => 
-    <CauseCard key={index} id={e.id} image={e.image} title={e.title} subtitle={e.subtitle} state={e.state}/>
-  )
+  const allCards = cards.map( ({id, image, title, subtitle, state}, index) => 
+    <CauseCard key={index} id={id} image={image} title={title} subtitle={subtitle} state={state}/>
+  );
   return(   
-    <div className={s.container}>
-      <div className={s.subContainer}>
-        <h1 className={s.title}>Causes onboard</h1>
+    <div className={container}>
+      <div className={subContainer}>
+        <h1 className={title}>Causes onboard</h1>
         <p>lorem ipsum dolor sit amet, consectetur adip</p>
-        <div className={s.cards} >
+        <div className={cardsContainer} >
           {allCards}
         </div>
       </div>

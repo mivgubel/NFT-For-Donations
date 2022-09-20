@@ -4,17 +4,17 @@
   margin: 50px;
 }
 
-.titleAndImg {
+.titleAndImage {
   display: flex;
   flex-direction: column;
   margin-right: 30px;
 }
 
-.img{
+.imageStyle{
   width: 200px;
 }
 
-.description {
+.descriptionStyle {
   width: 70%;
   text-align: justify;
   margin-right: 10px;

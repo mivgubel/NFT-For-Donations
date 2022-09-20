@@ -1,27 +1,26 @@
 //React
-import React, {useState, useEffect } from 'react';
-
+import React from 'react';
 
 //style
 import s from './about.module.css';
 
 //Constants
-import { ABOUT_IMAGE, LOGO } from '../../Utils/Constants/Images';
+import { ABOUT_IMAGE } from '../../Utils/Constants/Images';
 
 //Bootstrap
 import Button from 'react-bootstrap/Button';
 
 const About = () => {
-
+  const {container, subContainer, description, aboutImage} = s;
   return(   
-    <div className={s.container}>
-      <div className={s.subContainer}>
+    <div className={container}>
+      <div className={subContainer}>
         <h1 className="bigTitle">About the title</h1>
-        <p className={s.description}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque itaque aperiam explicabo? Voluptas, dolores! Dolor hic veniam ad sit voluptatum voluptatibus quos est libero placeat! Expedita velit reiciendis voluptatibus ab?
+        <p className={description}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque itaque aperiam explicabo? Voluptas, dolores! Dolor hic veniam ad sit voluptatum voluptatibus quos est libero placeat! Expedita velit reiciendis voluptatibus ab?
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque itaque aperiam explicabo? Voluptas, dolores! Dolor hic veniam ad sit voluptatum voluptatibus quos est libero placeat! Expedita velit reiciendis voluptatibus ab?</p>
-        <Button className="generalBtn" variant="primary">Call to action</Button>
+        <Button className="generalButton" variant="primary">Call to action</Button>
       </div>
-      <img className={s.img} src={ABOUT_IMAGE} alt="Bailarines" />
+      <img className={aboutImage} src={ABOUT_IMAGE} alt="Bailarines" />
     </div>
   )
 }
