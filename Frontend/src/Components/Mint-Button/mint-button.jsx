@@ -1,16 +1,25 @@
 //React
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 //Bootstrap
 import Button from 'react-bootstrap/Button';
 
 //Constants
-import { CAUSES_INFO } from '../../Utils/Constants/causes';
 import {  MINT } from '../../Utils/Constants/Routes';
 
+// Redux actions
+import { getAllCauses } from '../../redux/actions';
+
 const MintButton = ({id}) => {
-  const causes = CAUSES_INFO;
+  //Dispatch
+  const dispatch = useDispatch();
+  useEffect(()=> {
+    dispatch(getAllCauses());
+  }, [ dispatch, id ]);
+  const causes = useSelector(state => state.allCauses);
   const {state} = causes[id - 1];
 
   return(   

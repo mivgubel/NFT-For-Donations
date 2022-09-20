@@ -1,5 +1,7 @@
 //React
 import { NavLink, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 //Style
 import s from './collection-element.module.css';
@@ -9,15 +11,23 @@ import Button from 'react-bootstrap/Button';
 
 //Constants
 import { COLLECTION } from '../../Utils/Constants/Routes';
-import { CAUSES_INFO } from '../../Utils/Constants/causes';
 
 //Local Components
 import MintButton from '../../Components/Mint-Button/mint-button';
 
+// Redux actions
+import { getAllCauses } from '../../redux/actions'
+
 export default function CollectionElement() {
   const {container, nftImage, descriptionStyle, buttonContainer} = s;
   const { id, idElement }= useParams();
-  const causes = CAUSES_INFO;
+   //Dispatch
+  const dispatch = useDispatch();
+  useEffect(()=> {
+    dispatch(getAllCauses());
+  }, [ dispatch, id ]);
+
+  const causes = useSelector(state => state.allCauses);
   const cause = causes[id - 1];
   const {title} = cause;
   const { image, nftTitle, description } = cause.collection[idElement - 1];

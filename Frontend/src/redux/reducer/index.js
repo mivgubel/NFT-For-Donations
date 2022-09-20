@@ -1,20 +1,20 @@
 import {
-  PANTALLA_ACTUAL, 
+  GET_ALL_CAUSES, 
 } from '../actions'
 
 
 
 
 const initialState = {
-  pantallaAcutal: ''
+  allCauses: []
 };
 
 function rootReducer( state = initialState, { type, payload } ) {
   switch ( type ) {
-      case PANTALLA_ACTUAL:
+      case GET_ALL_CAUSES:
           return {
               ...state,
-              professionals: payload,
+              allCauses: payload,
           };
       default:
           return state;
