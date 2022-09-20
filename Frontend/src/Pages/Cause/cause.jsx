@@ -3,7 +3,7 @@ import { CAUSES_INFO } from '../../Utils/Constants/causes';
 import s from './cause.module.css';
 //Bootstrap
 import Button from 'react-bootstrap/Button';
-import { CAUSES, MINT } from '../../Utils/Constants/Routes';
+import { CAUSES, COLLECTION, MINT } from '../../Utils/Constants/Routes';
 import TresNft from '../../Components/Tres-Nft/tres-nft';
 export default function Cause() {
   const causes = CAUSES_INFO;
@@ -19,6 +19,9 @@ export default function Cause() {
       <div className={s.btnContainer}>
       <NavLink className={state === "Soon" ? "hide" : ""} to={`${MINT}/${id}`}>
         <Button className="generalBtn" variant="primary">Mint Collection</Button>
+      </NavLink>
+      <NavLink className="nav-link" to={`${COLLECTION}/${id}`}>
+        <Button className="generalBtn" variant="primary">Full Collection</Button>
       </NavLink>
       <NavLink className="nav-link" to={CAUSES}>
         <Button className="generalBtn" variant="primary">All Causes</Button>

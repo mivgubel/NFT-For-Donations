@@ -9,9 +9,30 @@ const CAUSES_INFO = [
     "state" : "Live",
     "description" : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat.",
     "collection" : [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBSvZZp18wtEy_J_K_yP-lpeoN8y7llHa2tynzXYRY1PrRGovQ8qJdzhY7ePvkEslCHg&usqp=CAU",
-      "https://gcon4.com/wp-content/uploads/2019/04/ONG-1.jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShdRc16xmP68f6uK6kxf5OaGUsfAHz0srQVFBIwF9Phn7cZTl27hm2EGYM5x1dH24kpUo&usqp=CAU"
+      {
+        nftTitle : "N1",
+        image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBSvZZp18wtEy_J_K_yP-lpeoN8y7llHa2tynzXYRY1PrRGovQ8qJdzhY7ePvkEslCHg&usqp=CAU",
+        quantity : 10,
+        minted : 9,
+        price: 200,
+        details : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat."
+      },
+      {
+        nftTitle : "N2",
+        image : "https://gcon4.com/wp-content/uploads/2019/04/ONG-1.jpg",
+        quantity : 190,
+        minted : 19,
+        price : 200,
+        details : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat."
+      },
+      {
+        nftTitle : "N3",
+        image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShdRc16xmP68f6uK6kxf5OaGUsfAHz0srQVFBIwF9Phn7cZTl27hm2EGYM5x1dH24kpUo&usqp=CAU",
+        quantity : 100,
+        minted : 90,
+        price : 200,
+        details : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat."
+      },
     ]
   },
   {
@@ -22,9 +43,30 @@ const CAUSES_INFO = [
     "state" : "Live",
     "description" : "Ut eget fringilla nulla. Integer id fermentum felis. Vivamus porta, ante eu interdum lacinia, nunc quam posuere ex, nec feugiat dolor odio at ex. Aenean nibh eros, finibus luctus nunc porta, condimentum venenatis turpis. Curabitur pharetra dolor in orci convallis, eu molestie arcu volutpat. Suspendisse commodo ut mauris vel faucibus. Proin hendrerit elit eu mauris venenatis, lobortis dapibus orci suscipit. Integer felis urna, bibendum sit amet nibh id, sollicitudin blandit leo.",
     "collection" : [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBSvZZp18wtEy_J_K_yP-lpeoN8y7llHa2tynzXYRY1PrRGovQ8qJdzhY7ePvkEslCHg&usqp=CAU",
-      "https://gcon4.com/wp-content/uploads/2019/04/ONG-1.jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShdRc16xmP68f6uK6kxf5OaGUsfAHz0srQVFBIwF9Phn7cZTl27hm2EGYM5x1dH24kpUo&usqp=CAU"
+      {
+        nftTitle : "N1",
+        image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBSvZZp18wtEy_J_K_yP-lpeoN8y7llHa2tynzXYRY1PrRGovQ8qJdzhY7ePvkEslCHg&usqp=CAU",
+        quantity : 10,
+        minted : 9,
+        price: 200,
+        details : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat."
+      },
+      {
+        nftTitle : "N2",
+        image : "https://gcon4.com/wp-content/uploads/2019/04/ONG-1.jpg",
+        quantity : 190,
+        minted : 19,
+        price : 200,
+        details : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat."
+      },
+      {
+        nftTitle : "N3",
+        image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShdRc16xmP68f6uK6kxf5OaGUsfAHz0srQVFBIwF9Phn7cZTl27hm2EGYM5x1dH24kpUo&usqp=CAU",
+        quantity : 100,
+        minted : 90,
+        price : 200,
+        details : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat."
+      },
     ]
   },
   {
@@ -35,9 +77,30 @@ const CAUSES_INFO = [
     "state" : "Soon",
     "description" : "Morbi congue scelerisque rhoncus. Ut lacinia nibh metus, vel placerat velit fermentum eget. In vel velit sit amet elit vulputate interdum. Duis sodales velit viverra urna placerat, in molestie leo efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in pulvinar dolor. Vivamus pretium mattis sem, et pulvinar lectus commodo ac. Sed a tincidunt quam. Vestibulum sit amet nulla at metus maximus lobortis. Vivamus ac odio sed leo tristique placerat vitae non sem. Curabitur fermentum magna vitae finibus elementum. Integer tincidunt, enim sit amet dignissim pharetra, lectus enim molestie lacus, a bibendum nisl dolor at sem. Praesent at aliquam diam, nec laoreet lectus.",
     "collection" : [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBSvZZp18wtEy_J_K_yP-lpeoN8y7llHa2tynzXYRY1PrRGovQ8qJdzhY7ePvkEslCHg&usqp=CAU",
-      "https://gcon4.com/wp-content/uploads/2019/04/ONG-1.jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShdRc16xmP68f6uK6kxf5OaGUsfAHz0srQVFBIwF9Phn7cZTl27hm2EGYM5x1dH24kpUo&usqp=CAU"
+      {
+        nftTitle : "N1",
+        image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBSvZZp18wtEy_J_K_yP-lpeoN8y7llHa2tynzXYRY1PrRGovQ8qJdzhY7ePvkEslCHg&usqp=CAU",
+        quantity : 10,
+        minted : 9,
+        price: 200,
+        details : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat."
+      },
+      {
+        nftTitle : "N2",
+        image : "https://gcon4.com/wp-content/uploads/2019/04/ONG-1.jpg",
+        quantity : 190,
+        minted : 19,
+        price : 200,
+        details : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat."
+      },
+      {
+        nftTitle : "N3",
+        image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShdRc16xmP68f6uK6kxf5OaGUsfAHz0srQVFBIwF9Phn7cZTl27hm2EGYM5x1dH24kpUo&usqp=CAU",
+        quantity : 100,
+        minted : 90,
+        price : 200,
+        details : "orem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. Nunc sollicitudin tincidunt ante in tincidunt. Vivamus eget ligula pellentesque lacus tristique sollicitudin. In aliquam risus ac justo porta, at luctus mauris vestibulum. Duis condimentum mi vitae neque cursus placerat. Nam nibh magna, tristique at est ac, lacinia volutpat dui. In sed enim eu nibh porttitor tincidunt vel ut libero. Donec quis felis eu enim pellentesque gravida in et ligula. Morbi porta, velit eu ultrices porta, lacus augue fringilla felis, id gravida risus leo vel urna. Proin dictum, augue quis laoreet mollis, elit mi viverra purus, ac volutpat leo nisi ut mauris. Pellentesque finibus turpis non odio tincidunt, vel interdum eros posuere. Fusce facilisis auctor ipsum, vel mattis nunc pulvinar eget. Morbi odio diam, vehicula vitae nisl eget, fermentum blandit leo. Phasellus pharetra libero a laoreet volutpat."
+      },
     ]
   },
 ]
