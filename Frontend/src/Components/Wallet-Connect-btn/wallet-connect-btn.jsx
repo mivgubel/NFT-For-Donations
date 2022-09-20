@@ -6,16 +6,14 @@ import {ethers} from 'ethers';
 
 //bootstrap
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-
+import Spinner from 'react-bootstrap/Spinner';
 
 //style
 import s from './wallet-connect-btn.module.css';
 
-//Constants
-import { CAUSE_SUB_PATH, ROUTES_WITH_SEARCH } from '../../Utils/Constants/Routes';
-
 const WalletConnectBtn = () => {
+  const {buttonStyle} = s;
+
   //States
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
@@ -23,24 +21,32 @@ const WalletConnectBtn = () => {
   const [connButtonText, setConnectButtonText] = useState('Connect Wallet');
   const [red, setRed] = useState(null);
   const [token, setToken] = useState(null);
-
+  const [spinner, setSpinner] = useState(false);
   const connectWalletHandler = () => {
+    if (red) {
+      setRed(null);
+      setConnectButtonText('Connect Wallet');
+      setUserBalance(null);
+      setSpinner(false);
+      return;
+    }
     if (window.ethereum) {
       window.ethereum.request({
         method: 'eth_requestAccounts'
       })
       .then( result => {
+        setSpinner(true);
         accountChangedHandler(result[0]);
         actualChainWallet(window.ethereum.networkVersion);
         setConnectButtonText('Disconnect');
       })
     } else {
       setErrorMessage('Install MetaMask');
+      setSpinner(false);
     }
   }
 
   const accountChangedHandler = (newAccount) => {
-    setDefaultAccount(newAccount);
     getUserBalance(newAccount.toString());
   }
 
@@ -48,12 +54,11 @@ const WalletConnectBtn = () => {
     window.ethereum.request({method: 'eth_getBalance', params : [address, 'latest']})
     .then(balance => {
       setUserBalance(ethers.utils.formatEther(balance).slice(0,8));
+      setDefaultAccount(address);
+      setSpinner(false);
     })
   }
 
-  // const chainChangedHandler = () => {
-  //   window.location.reload();
-  // }
 
   const actualChainWallet = (chainId) => {
     localStorage.setItem("chain", chainId);
@@ -84,12 +89,15 @@ const WalletConnectBtn = () => {
   
   return(  
           <Button 
-          className={s.center}
+          className={buttonStyle}
           variant="light"
           onClick={connectWalletHandler}>
-              <p className={red ? s.hide : s.center}>{connButtonText}</p>
-              <p className={red !== "Red No Valida" && userBalance ? s.center : s.hide}>{userBalance + ' ' + token}</p>
-              <p className={red === "Red No Valida" && userBalance ? s.center : s.hide}>{ red }</p>
+              <div className={spinner ? "" : "hide"} >
+                <Spinner animation="border" variant="info" />
+              </div>
+              <p className={red ? "hide" : ""}>{connButtonText}</p>
+              <p className={red !== "Red No Valida" && userBalance ? "" : "hide"}>{userBalance + ' ' + token}</p>
+              <p className={red === "Red No Valida" && userBalance ? "" : "hide"}>{ red }</p>
           </Button>
           )
 }

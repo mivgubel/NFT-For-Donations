@@ -1,31 +1,25 @@
 //React
-import React, {useState, useEffect } from 'react';
-
-//web3
-import {ethers} from 'ethers';
-
-//bootstrap
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
-
+import React, {useState, useEffect} from 'react';
+import { NavLink } from 'react-router-dom';
+import { COLLECTION, COLLECTION_ELEMENT } from '../../Utils/Constants/Routes';
 
 //style
 import s from './tres-nft.module.css';
-import { NavLink } from 'react-router-dom';
-import { CAUSES } from '../../Utils/Constants/Routes';
 
 //Constants
 
-const TresNft = ({causes}) => {
-
+const TresNft = ({causes, id}) => {
+  const {collectionImage, container} = s;
   return(   
-    <div className={s.container}>
+    <div className={container}>
         {
           causes.map( (cause, index) => {
-            const {collection} = cause;
-            return(<img className={s.collectionImg} key={index} src={collection[index]} alt={`Img ${index}`}/>)
+            const collection = cause.collection;
+            return(
+              <NavLink className="nav-link" to={`${COLLECTION}/${id}/${COLLECTION_ELEMENT}/${index + 1}`} >
+                <img className={collectionImage} key={index} src={collection[index].image} alt={`Img ${index + 1}`}/>
+              </NavLink>
+            );
           })
         }
     </div>

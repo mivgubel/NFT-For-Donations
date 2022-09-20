@@ -1,27 +1,8 @@
-.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: green!important;
-}
-
-
-.hide {
-  display : none;
-}
 
 .logo {
   width : 10%;
   height : 50px;
   margin-right: 30px;
-}
-.noFormat {
-  text-decoration: none;
-}
-
-.nav {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
 }
 
 .navContainer{
