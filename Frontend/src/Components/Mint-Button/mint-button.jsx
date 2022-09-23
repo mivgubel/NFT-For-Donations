@@ -24,7 +24,7 @@ const MintButton = ({id}) => {
 
   return(   
     <NavLink className={state === "Soon" ? "hide" : ""} to={`${MINT}/${id}`}>
-      <Button className="generalButton" variant="primary">Mint Collection</Button>
+      <Button className="generalButton" variant="primary">Mint NFT</Button>
     </NavLink>
   )
 }
