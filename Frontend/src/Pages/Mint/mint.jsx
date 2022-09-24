@@ -21,7 +21,7 @@ import s from './mint.module.css';
 import TresNft from '../../Components/Tres-Nft/tres-nft';
 
 // Redux actions
-import { getAllCauses } from '../../redux/actions'
+import { getAllVisibleCauses } from '../../redux/actions'
 
 export default function Mint() {
   const {container, checkContainer, info, mintDiv, counter, icon} = s;
@@ -29,9 +29,9 @@ export default function Mint() {
   //Dispatch
   const dispatch = useDispatch();
   useEffect(()=> {
-    dispatch(getAllCauses());
+    dispatch(getAllVisibleCauses());
   }, [ dispatch, id ]);
-  const causes = useSelector(state => state.allCauses);
+  const causes = useSelector(state => state.allVisibleCauses);
 
   const {title,  state} = causes[id - 1];
 

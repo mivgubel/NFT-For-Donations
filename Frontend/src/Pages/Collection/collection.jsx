@@ -14,16 +14,16 @@ import Button from 'react-bootstrap/Button';
 import { COLLECTION, COLLECTION_ELEMENT } from '../../Utils/Constants/Routes';
 
 // Redux actions
-import { getAllCauses } from '../../redux/actions'
+import { getAllVisibleCauses } from '../../redux/actions'
 
 export default function Collection() {
   const { container, table, nftImage} = s;
   const { id }= useParams();
   const dispatch = useDispatch();
   useEffect(()=> {
-    dispatch(getAllCauses());
+    dispatch(getAllVisibleCauses());
   }, [ dispatch, id ]);
-  const causes = useSelector(state => state.allCauses);
+  const causes = useSelector(state => state.allVisibleCauses);
   const cause = causes[id - 1];
   const { collection } = cause;
   const COLUMNS = ["NFT", "Quantity Total", "Quantity Minted"];

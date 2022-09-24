@@ -10,15 +10,15 @@ import s from './causes.module.css';
 import { CAUSES } from '../../Utils/Constants/Routes';
 
 // Redux actions
-import { getAllCauses } from '../../redux/actions';
+import { getAllVisibleCauses } from '../../redux/actions';
 
 export default function Causas() {
     //Dispatch
     const dispatch = useDispatch();
     useEffect(()=> {
-      dispatch(getAllCauses());
+      dispatch(getAllVisibleCauses());
     }, [ dispatch ]);
-    const causes = useSelector(state => state.allCauses);
+    const causes = useSelector(state => state.allVisibleCauses);
 
   return (
     <div>

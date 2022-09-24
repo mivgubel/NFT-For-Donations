@@ -11,15 +11,15 @@ import Button from 'react-bootstrap/Button';
 import {  MINT } from '../../Utils/Constants/Routes';
 
 // Redux actions
-import { getAllCauses } from '../../redux/actions';
+import { getAllVisibleCauses } from '../../redux/actions';
 
 const MintButton = ({id}) => {
   //Dispatch
   const dispatch = useDispatch();
   useEffect(()=> {
-    dispatch(getAllCauses());
+    dispatch(getAllVisibleCauses());
   }, [ dispatch, id ]);
-  const causes = useSelector(state => state.allCauses);
+  const causes = useSelector(state => state.allVisibleCauses);
   const {state} = causes[id - 1];
 
   return(   

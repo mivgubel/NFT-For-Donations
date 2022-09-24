@@ -13,7 +13,7 @@ import TresNft from '../../Components/Tres-Nft/tres-nft';
 import MintButton from '../../Components/Mint-Button/mint-button';
 
 // Redux actions
-import { getAllCauses } from '../../redux/actions'
+import { getAllVisibleCauses } from '../../redux/actions'
 
 
 export default function Cause() {
@@ -23,9 +23,9 @@ export default function Cause() {
   //Dispatch
   const dispatch = useDispatch();
   useEffect(()=> {
-    dispatch(getAllCauses());
+    dispatch(getAllVisibleCauses());
   }, [ dispatch, id ]);
-  const causes = useSelector(state => state.allCauses);
+  const causes = useSelector(state => state.allVisibleCauses);
   const { image, title, description } = causes[id - 1];
 
   return(   

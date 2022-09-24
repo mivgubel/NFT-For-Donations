@@ -1,21 +1,33 @@
 import {
-  GET_ALL_CAUSES, 
+  GET_ALL_CAUSES, GET_ALL_VISIBLE_CAUSES, HIDE_CAUSE, 
 } from '../actions'
 
 
 
 
 const initialState = {
-  allCauses: []
+  allCauses: [],
+  allVisibleCauses: []
 };
 
 function rootReducer( state = initialState, { type, payload } ) {
   switch ( type ) {
       case GET_ALL_CAUSES:
           return {
-              ...state,
-              allCauses: payload,
+            ...state,
+            allCauses: payload,
           };
+      case GET_ALL_VISIBLE_CAUSES:
+        return {
+            ...state,
+            allVisibleCauses: payload,
+        };
+      case HIDE_CAUSE:
+        return {
+            ...state,
+            allVisibleCauses: payload,
+            allCauses: payload,
+        };
       default:
           return state;
   };
