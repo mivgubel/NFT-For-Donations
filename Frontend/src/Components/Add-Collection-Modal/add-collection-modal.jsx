@@ -16,10 +16,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { postCollection } from '../../redux/actions';
-<<<<<<< HEAD
 import Swal from 'sweetalert2';
-=======
->>>>>>> miting_develop
 
 const AddCollectionModal = () => {
   const {container} = s;
@@ -30,13 +27,8 @@ const AddCollectionModal = () => {
   const [mintPrice, setMintPrice] = useState(0);
   const [fechaLanzamiento, setFechaLanzamiento] = useState("");
   const [baseUri, setBaseUri] = useState(""); 
-<<<<<<< HEAD
   const [msg, setMsg] = useState("");
   const [className, setClassName] = useState("");
-=======
-  // const [msg, setMsg] = useState("");
-  // const [className, setClassName] = useState("");
->>>>>>> miting_develop
   //const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
   const { errorClass, errorMessage } = useSelector(state => state.errorNewCollection);
@@ -57,7 +49,6 @@ const AddCollectionModal = () => {
       fechaLanzamiento: fechaLanzamiento+":00-05:00",
       baseUri: baseUri
     }
-<<<<<<< HEAD
     // postCollection(data);
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -130,20 +121,6 @@ const AddCollectionModal = () => {
           ); 
   }
 
-=======
-    postCollection(data);
-  //  // axios.post();
-    axios.post("https://solidarityback.herokuapp.com/adminDashboard",data).then(function(response){
-        console.log("respon: ",response.data);
-        // setClassName("alert alert-success");
-        // setMsg(JSON.stringify(response.data));
-    }).catch(function (error){
-      console.log(error);
-        // setClassName("alert alert-danger");
-        // setMsg(JSON.stringify(error));
-    });
-  }
->>>>>>> miting_develop
   return(   
     <div className={container}>
       
@@ -155,11 +132,7 @@ const AddCollectionModal = () => {
         <Modal.Body>
           <Modal.Title>{"Create a new Collection"}</Modal.Title>
       <br />
-<<<<<<< HEAD
       <div id="msg" className={className}>{msg}</div>
-=======
-      <div id="msg" className={errorClass}>{errorMessage}</div>
->>>>>>> miting_develop
       <form onSubmit={submitForm} >
           <FloatingLabel
           label="Collection Name:"
@@ -203,13 +176,9 @@ const AddCollectionModal = () => {
             <Form.Control type="text" placeholder="DD/MM/YYYY" id="uri" 
               value={baseUri} onChange={(e)=>setBaseUri(e.target.value)} />
           </FloatingLabel>
-<<<<<<< HEAD
           <Button type="submit" className="btn btn-primary" id="sumit" disabled={validateFilledFields()}>
             Submit
           </Button>
-=======
-        <button type="submit" className="btn btn-primary" id="sumit">Submit</button>
->>>>>>> miting_develop
           <Button variant="danger" onClick={handleClose}>
             Cancel
           </Button>

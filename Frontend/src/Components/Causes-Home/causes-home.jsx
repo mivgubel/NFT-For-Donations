@@ -20,14 +20,8 @@ const CausesHome = () => {
     dispatch(getAllVisibleCauses());
   }, [ dispatch ]);
   const cards = useSelector(state => state.allVisibleCauses);
-<<<<<<< HEAD
   const allCards = cards.map( ({address, image, name, max_supply, presale_mint_start}, index) => 
     <CauseCard key={index} collectionContractAddress={address} image={image} name={name} max_supply={max_supply} presale_mint_start={presale_mint_start}/>
-=======
-
-  const allCards = cards.map( ({id, image, title, subtitle, state}, index) => 
-    <CauseCard key={index} id={id} image={image} title={title} subtitle={subtitle} state={state}/>
->>>>>>> miting_develop
   );
 
   return(   

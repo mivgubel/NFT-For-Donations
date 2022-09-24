@@ -18,7 +18,6 @@ const MintButton = ({collectionContractAddress}) => {
   const dispatch = useDispatch();
   useEffect(()=> {
     dispatch(getAllVisibleCauses());
-<<<<<<< HEAD
   }, [ dispatch, collectionContractAddress ]);
   const causes = useSelector(state => state.allVisibleCauses);
   const cause = causes.filter(contract => (contract.address === collectionContractAddress))[0];
@@ -31,14 +30,6 @@ const MintButton = ({collectionContractAddress}) => {
 
   return(   
     <NavLink className={!validaLive() ? "hide" : ""} to={`${MINT}/${collectionContractAddress}`}>
-=======
-  }, [ dispatch, id ]);
-  const causes = useSelector(state => state.allVisibleCauses);
-  // const {state} = causes[id - 1];
-
-  return(   
-    <NavLink className={"state" === "Soon" ? "hide" : ""} to={`${MINT}/${id}`}>
->>>>>>> miting_develop
       <Button className="generalButton" variant="primary">Mint NFT</Button>
     </NavLink>
   )
