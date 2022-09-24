@@ -21,21 +21,6 @@ import { COLLECTION } from '../../Utils/Constants/Routes';
 import { getAllCauses, hideCause } from '../../redux/actions';
 
 
-//Style
-import s from "./admin-dashboard.module.css";
-
-//Bootstap
-import { Button, Table } from 'react-bootstrap';
-
-// Local Components
-import AddCollectionModal from "../../Components/Add-Collection-Modal/add-collection-modal";
-
-//Constants
-import { COLLECTION } from '../../Utils/Constants/Routes';
-
-// Redux actions
-import { getAllCauses, hideCause } from '../../redux/actions';
-
 
 export default function AdminDashboard() {
   const { button, container, table, nftImage,buttonContainer} = s;
