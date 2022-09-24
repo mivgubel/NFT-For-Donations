@@ -14,22 +14,23 @@ import Button from 'react-bootstrap/Button';
 import { COLLECTION, COLLECTION_ELEMENT } from '../../Utils/Constants/Routes';
 
 // Redux actions
-import { getAllCauses } from '../../redux/actions'
+import { getAllVisibleCauses } from '../../redux/actions'
 
 export default function Collection() {
   const { container, table, nftImage} = s;
-  const { id }= useParams();
+  const { collectionContractAddress } = useParams();
   const dispatch = useDispatch();
   useEffect(()=> {
-    dispatch(getAllCauses());
-  }, [ dispatch, id ]);
-  const causes = useSelector(state => state.allCauses);
-  const cause = causes[id - 1];
-  const { collection } = cause;
+    dispatch(getAllVisibleCauses());
+  }, [ dispatch ]);
+  const causes = useSelector(state => state.allVisibleCauses);
+  const cause = causes.filter(contract => (contract.address === collectionContractAddress))[0];
+  //TODO RELACIONAR CAUSA CON LA COLECCION QUE LA REPRESENTA
+  // const { collection } = cause;
   const COLUMNS = ["NFT", "Quantity Total", "Quantity Minted"];
   return(   
     <div className={container}>
-      <p className="bigTitle">{cause.title}</p>
+      <p className="bigTitle">{cause?.title}</p>
       <Table className={table} responsive>
       <thead>
         <tr>
@@ -41,7 +42,7 @@ export default function Collection() {
         </tr>
       </thead>
       <tbody>
-        {collection.map((collectionNft, index) => (
+        {/* {collection.map((collectionNft, index) => (
         <tr key={`${index}-tr`}>
           <td key={`${index}-count`}>{index + 1}</td>
           <td key={`${index}-image`}><img className={nftImage} alt={collectionNft.nftTitle} src={collectionNft.image}/></td>
@@ -53,7 +54,7 @@ export default function Collection() {
             </NavLink>  
           </td>
         </tr>
-        ))}
+        ))} */}
       </tbody>
     </Table>
     </div>

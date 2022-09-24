@@ -9,7 +9,7 @@ import s from './causes-home.module.css';
 import CauseCard from '../Card/card';
 
 //Constants
-import { getAllCauses } from '../../redux/actions';
+import { getAllVisibleCauses } from '../../redux/actions';
 
 const CausesHome = () => {
   const {container, subContainer, title, cardsContainer} = s;
@@ -17,9 +17,9 @@ const CausesHome = () => {
   //Dispatch
   const dispatch = useDispatch();
   useEffect(()=> {
-    dispatch(getAllCauses());
+    dispatch(getAllVisibleCauses());
   }, [ dispatch ]);
-  const cards = useSelector(state => state.allCauses);
+  const cards = useSelector(state => state.allVisibleCauses);
 
   const allCards = cards.map( ({id, image, title, subtitle, state}, index) => 
     <CauseCard key={index} id={id} image={image} title={title} subtitle={subtitle} state={state}/>
@@ -31,7 +31,7 @@ const CausesHome = () => {
         <h1 className={title}>Causes onboard</h1>
         <p>lorem ipsum dolor sit amet, consectetur adip</p>
         <div className={cardsContainer} >
-          {allCards}
+          {allCards.slice(0,3)}
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import s from './navbar.module.css';
 
 //Constants
-import { CAUSES, HOME, USER_DASHBOARD } from '../../Utils/Constants/Routes';
+import { ADMIN_DASHBOARD, CAUSES, HOME, USER_DASHBOARD } from '../../Utils/Constants/Routes';
 import { LOGO } from '../../Utils/Constants/Images';
 
 //Local Components
@@ -92,8 +92,8 @@ const NavbarProject = () => {
           <Nav className={navContainer}>
             <NavLink className="nav-link" to={HOME}>Home</NavLink>
             <NavLink className="nav-link" to={CAUSES}>Find a cause</NavLink>
-            <NavLink className="nav-link" to={"/BBBB"}>Developers</NavLink>
-            <NavLink className="nav-link" to={USER_DASHBOARD}>Dashboard</NavLink>
+            {/* <NavLink className="nav-link" to={"/BBBB"}>Developers</NavLink> */}
+            <NavLink className="nav-link" to={ADMIN_DASHBOARD}>Dashboard</NavLink>
           </Nav>
         </Navbar.Collapse>
         {/* <Form onChange={() => setDarkMode(!darkMode)}>

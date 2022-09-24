@@ -21,25 +21,27 @@ import s from './mint.module.css';
 import TresNft from '../../Components/Tres-Nft/tres-nft';
 
 // Redux actions
-import { getAllCauses } from '../../redux/actions'
+import { getAllVisibleCauses } from '../../redux/actions'
 
 export default function Mint() {
   const {container, checkContainer, info, mintDiv, counter, icon} = s;
-  const { id }= useParams();
+  const { collectionContractAddress } = useParams();
   //Dispatch
   const dispatch = useDispatch();
   useEffect(()=> {
-    dispatch(getAllCauses());
-  }, [ dispatch, id ]);
-  const causes = useSelector(state => state.allCauses);
-
-  const {title,  state} = causes[id - 1];
+    dispatch(getAllVisibleCauses());
+  }, [ dispatch, collectionContractAddress ]);
+  const causes = useSelector(state => state.allVisibleCauses);
+  const cause = causes.filter(contract => (contract.address === collectionContractAddress))[0];
+  console.log(cause)
+  const state = false;
 
   const [donateAll, setDonateAll] = useState(false);
   const [nftCount, setNftCount] = useState(1);
 
   //TODO INTERACTUAR CON REDUX
-  const totalNfts = 1000;
+  const totalNfts = cause?.max_supply;
+  const price = cause?.presale_mint_price;
   const minted = 500;
 
   const onCheck = () => {
@@ -59,9 +61,10 @@ export default function Mint() {
   
   return(   
     <div className={container}>
-      <p className="bigTitle">Cause {title} Mint</p>
-      <TresNft id={id} causes={causes}/>
+      <p className="bigTitle">Cause {cause?.title} Mint</p>
+      <TresNft collectionContractAddress={collectionContractAddress} causes={causes}/>
       <hr/>
+      <p>Price per mint: {price} USD</p>
       <div className={checkContainer}>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check onChange={onCheck} type="checkbox" label="Donate All Profit" />
@@ -91,7 +94,7 @@ export default function Mint() {
           <Button onClick={() => change(-1)} variant="outline-secondary">-</Button>
           <Button onClick={() => change(+1)} variant="outline-secondary">+</Button>
         </InputGroup>
-        <Button onClick={mint} className="generalButton" variant="secondary" disabled={state === 'Soon'}>Mint</Button>
+        <Button onClick={mint} className="generalButton" variant="secondary" disabled={state}>Mint</Button>
       </div>
     </div>
   )

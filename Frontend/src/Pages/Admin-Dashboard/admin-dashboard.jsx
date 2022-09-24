@@ -1,75 +1,81 @@
-import React from "react";
-import s from "./admin-dashboard.module.css";
-import axios from "axios";
+//React
+import { NavLink, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { useState } from "react";
 
+//Style
+import s from "./admin-dashboard.module.css";
+
+//Bootstap
+import { Button, Table } from 'react-bootstrap';
+
+// Local Components
+import AddCollectionModal from "../../Components/Add-Collection-Modal/add-collection-modal";
+
+//Constants
+import { COLLECTION } from '../../Utils/Constants/Routes';
+
+// Redux actions
+import { getAllCauses, hideCause } from '../../redux/actions';
+
+
 export default function AdminDashboard() {
-  const [nameCollection, setNameCollection] = useState("");
-  const [symbol, setSymbol] = useState("");
-  const [maxSupply, setMaxSupply] = useState(0);
-  const [mintPrice, setMintPrice] = useState(0);
-  const [fechaLanzamiento, setFechaLanzamiento] = useState("");
-  const [baseUri, setBaseUri] = useState(""); 
-  const [msg, setMsg] = useState("");
-  const [className, setClassName] = useState("");
-  //const [isActive, setIsActive] = useState(false);
+  const { button, container, table, nftImage,buttonContainer} = s;
+  const dispatch = useDispatch();
+  const causes = useSelector(state => state.allCauses);
+  useEffect(()=> {
+    dispatch(getAllCauses());
+  }, [dispatch]);
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    let data = {
-      name: nameCollection,
-      simbol: symbol,
-      maxSupply: maxSupply,
-      price: mintPrice,
-      fechaLanzamiento: fechaLanzamiento+":00-05:00",
-      baseUri: baseUri
-    }
-    
-   // axios.post();
-   axios.post("https://solidarityback.herokuapp.com/adminDashboard",data).then(function(response){
-      console.log("respon: ",response.data);
-      setClassName("alert alert-success");
-      setMsg(JSON.stringify(response.data));
-   }).catch(function (error){
-    console.log(error);
-      setClassName("alert alert-danger");
-      setMsg(JSON.stringify(error));
-   });
+  const COLUMNS = ["Title", "Image", "Actions"];
+  const [collectionId, setCollectionId] = useState("");
+
+  const showCollection = (causeId) => {
+    // dispatch(hideCause(causeId));
+    console.log("Ocultando causa con contrato: " + causeId);
   }
-
-
 
 	return (
 		<div className="container">
+      
       <br />
-      <div id="msg" className={className}>{msg}</div>
-      <form onSubmit={submitForm} >
-  <div className="mb-3">
-    <label for="name" className="form-label">Collection Name:</label>
-    <input type="text" className="form-control" id="name" value={nameCollection} onChange={(e)=>setNameCollection(e.target.value)} />
-  </div>
-  <div className="mb-3">
-    <label for="symbol" className="form-label">Symbol:</label>
-    <input type="text" className="form-control" id="symbol" value={symbol} onChange={(e)=>setSymbol(e.target.value)} />
-  </div>
-  <div className="mb-3">
-    <label for="supply" className="form-label">Max Supply:</label>
-    <input type="number" className="form-control" id="supply" value={maxSupply} onChange={(e)=>setMaxSupply(e.target.value)}/>
-  </div>
-  <div className="mb-3">
-    <label for="price" className="form-label">Mint Price:</label>
-    <input type="number" className="form-control" id="price" value={mintPrice} onChange={(e)=>setMintPrice(e.target.value)}/>
-  </div>
-  <div className="mb-3">
-    <label for="fecha" className="form-label">Fecha de Lanzamiento:</label>
-    <input type="datetime-local" className="form-control" id="fecha" value={fechaLanzamiento} onChange={(e)=>setFechaLanzamiento(e.target.value)}/>
-  </div>
-  <div className="mb-3">
-    <label for="uri" className="form-label">Base Uri:</label>
-    <input type="text" className="form-control" id="uri" value={baseUri} onChange={(e)=>setBaseUri(e.target.value)}/>
-  </div>
-  <button type="submit" className="btn btn-primary" id="sumit">Submit</button>
-</form>
+      <div className={container}>
+        <p className="bigTitle">Dashboard Admin</p>
+        <AddCollectionModal />
+        <Table className={table} responsive>
+          <thead>
+            <tr>
+              <th key={`${0}-column`}>#</th>
+              {COLUMNS.map((column, index) => (
+                <th key={`${index}-column`}>{column}</th>
+              ))}
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {causes.map((cause, index) => (
+            <tr key={`${index}-tr`}>
+              <td key={`${index}-count`}>{index + 1}</td>
+              <td key={`${index}-title`}>{cause?.name}</td>
+              <td key={`${index}-image`}><img className={nftImage} alt={cause?.name} src={cause.image}/></td>
+              <td className={buttonContainer} key={`${index}-actions`}>
+                <Button onClick={() => showCollection(cause.address)} className={button} key={`${index}-showButton`}  variant="primary">
+                  {cause.show ? "Hide" : "Show"}
+                </Button>
+                <br/>
+                <NavLink key={`${index}-detailsLink`} className="nav-link" to={`${COLLECTION}/${cause.address}`} >
+                  <Button  className={button} key={`${index}-detailsButton`} variant="secondary">
+                    View All
+                  </Button>
+                </NavLink>
+              </td>
+            </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+      
 		</div>
 	);
 }
