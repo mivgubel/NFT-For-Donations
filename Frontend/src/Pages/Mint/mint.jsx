@@ -54,20 +54,17 @@ export default function Mint() {
   }
 
   const mint = async () => {
-    //TODO Implementar Mint
-    
-    console.log("MINTEANDO....")
     try {
       const { ethereum } = window;
 			if (ethereum) {
 				const provider = new ethers.providers.Web3Provider(ethereum);
 				const signer = provider.getSigner();
-				const contract = new ethers.Contract("0x1ea5a1d9348897facf39f261f7c329c995de67bd", abi.abi, signer);
+				const contract = new ethers.Contract(collectionContractAddress, abi.abi, signer);
 
 				console.log("Going to pop wallet now to pay gas...");
-        let price = nftCount * 0.001;
+        let priceFinal = nftCount * price;
 				let tx = await contract.mint(nftCount, {
-					value: ethers.utils.parseEther(price.toString()),
+					value: ethers.utils.parseEther(priceFinal.toString()),
 				});
 				// Wait for the transaction to be mined
 				const receipt = await tx.wait();
