@@ -10,13 +10,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMyCollection } from '../../redux/actions';
 
 export default function UserDashboard() {
-  const {container, firstcard, secondCard, cardMinted,dashboardContainer, table, buttonContainer, nftImage, button, collectionContainer} = s;
+  const {container, firstcard, secondCard,dashboardContainer, table, buttonContainer, nftImage, button, collectionContainer} = s;
   const COLUMNS = ["Title", "Image", "Cost", "Yield", "Causes Profit", "User Profit" ];
   const dispatch = useDispatch();
   const wallet = useSelector(state => state.user.address);
-  const causes = useSelector(state => state.allCauses);
   useEffect(()=> {
-    getMyCollection(wallet);
+    if (wallet) {
+      getMyCollection(wallet);
+    }
   }, [dispatch]);
   const userCollection = useSelector(state => state.userCollection);
   return(
