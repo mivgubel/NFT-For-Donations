@@ -3,6 +3,23 @@ import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from "react";
+import axios from "axios";
+
+//Style
+import s from "./admin-dashboard.module.css";
+
+//Bootstap
+import { Button, Table } from 'react-bootstrap';
+
+// Local Components
+import AddCollectionModal from "../../Components/Add-Collection-Modal/add-collection-modal";
+
+//Constants
+import { COLLECTION } from '../../Utils/Constants/Routes';
+
+// Redux actions
+import { getAllCauses, hideCause } from '../../redux/actions';
+
 
 //Style
 import s from "./admin-dashboard.module.css";

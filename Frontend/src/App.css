@@ -43,8 +43,11 @@
   font-weight : regular !important;
   font-family: 'Work Sans' !important;
   text-transform: capitalize;
+<<<<<<< HEAD
   width: 200px;
   text-align: center;
+=======
+>>>>>>> miting_develop
 }
 
 .generalButton { 
