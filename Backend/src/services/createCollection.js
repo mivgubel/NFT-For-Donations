@@ -48,7 +48,6 @@ const collection = (req, res) => {
 		axios.request(options)
 			.then(function (response) {
 				res.json(response.data);
-				// getCollection(response.data.transaction_hash);
 			})
 			.catch(function (err) {
 				res.status(500).json({ error: err });
