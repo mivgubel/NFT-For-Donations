@@ -15,7 +15,9 @@ export const getAllVisibleCauses =  () => {
     try {
       const causes = await axios.get("https://solidarityback.herokuapp.com/");
       //TODO AGREGAR FILTADO PARA CAUSAS VISIBLES Y NO VISIBLES
-      const response = causes.data.contracts;
+      const response = causes.data.contracts.sort( (a, b) =>  {
+        return new Date(a.public_mint_start).getTime() - new Date(b.public_mint_start).getTime();
+      });
       return dispatch({
         type: GET_ALL_VISIBLE_CAUSES,
         payload: response

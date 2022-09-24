@@ -33,7 +33,6 @@ export default function Mint() {
   }, [ dispatch, collectionContractAddress ]);
   const causes = useSelector(state => state.allVisibleCauses);
   const cause = causes.filter(contract => (contract.address === collectionContractAddress))[0];
-  console.log(cause)
   const state = false;
 
   const [donateAll, setDonateAll] = useState(false);
