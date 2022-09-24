@@ -26,8 +26,8 @@ const AddCollectionModal = () => {
   const [mintPrice, setMintPrice] = useState(0);
   const [fechaLanzamiento, setFechaLanzamiento] = useState("");
   const [baseUri, setBaseUri] = useState(""); 
-  // const [msg, setMsg] = useState("");
-  // const [className, setClassName] = useState("");
+  const [msg, setMsg] = useState("");
+  const [className, setClassName] = useState("");
   //const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
   const { errorClass, errorMessage } = useSelector(state => state.errorNewCollection);
@@ -48,18 +48,32 @@ const AddCollectionModal = () => {
       fechaLanzamiento: fechaLanzamiento+":00-05:00",
       baseUri: baseUri
     }
-    postCollection(data);
+    // postCollection(data);
   //  // axios.post();
     axios.post("https://solidarityback.herokuapp.com/adminDashboard",data).then(function(response){
         console.log("respon: ",response.data);
-        // setClassName("alert alert-success");
-        // setMsg(JSON.stringify(response.data));
+        setClassName("alert alert-success");
+        setMsg(JSON.stringify(response.data));
+        cleanForm();
+        handleClose();
     }).catch(function (error){
       console.log(error);
-        // setClassName("alert alert-danger");
-        // setMsg(JSON.stringify(error));
+        setClassName("alert alert-danger");
+        setMsg(JSON.stringify(error));
     });
   }
+
+  const cleanForm = () => {
+    setNameCollection("");
+    setSymbol("");
+    setMaxSupply(0);
+    setMintPrice(0);
+    setFechaLanzamiento("");
+    setBaseUri(""); 
+    setMsg("");
+    setClassName("");
+  }
+
   return(   
     <div className={container}>
       
@@ -71,7 +85,7 @@ const AddCollectionModal = () => {
         <Modal.Body>
           <Modal.Title>{"Create a new Collection"}</Modal.Title>
       <br />
-      <div id="msg" className={errorClass}>{errorMessage}</div>
+      <div id="msg" className={className}>{msg}</div>
       <form onSubmit={submitForm} >
           <FloatingLabel
           label="Collection Name:"
