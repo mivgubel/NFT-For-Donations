@@ -1,6 +1,6 @@
 
 const ADMIN_DASHBOARD = '/admin-dashboard';
-const CAUSE = '/cause/:id';
+const CAUSE = '/cause/:collectionContractAddress';
 const CAUSE_SUB_PATH = '/cause/'
 const CAUSES = '/cause';
 const COLLECTION = '/collection';

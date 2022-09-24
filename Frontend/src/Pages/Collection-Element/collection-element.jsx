@@ -16,7 +16,7 @@ import { COLLECTION } from '../../Utils/Constants/Routes';
 import MintButton from '../../Components/Mint-Button/mint-button';
 
 // Redux actions
-import { getAllCauses } from '../../redux/actions'
+import { getAllVisibleCauses } from '../../redux/actions'
 
 export default function CollectionElement() {
   const {container, nftImage, descriptionStyle, buttonContainer} = s;
@@ -24,10 +24,10 @@ export default function CollectionElement() {
    //Dispatch
   const dispatch = useDispatch();
   useEffect(()=> {
-    dispatch(getAllCauses());
+    dispatch(getAllVisibleCauses());
   }, [ dispatch, id ]);
 
-  const causes = useSelector(state => state.allCauses);
+  const causes = useSelector(state => state.allVisibleCauses);
   const cause = causes[id - 1];
   const {title} = cause;
   const { image, nftTitle, description } = cause.collection[idElement - 1];

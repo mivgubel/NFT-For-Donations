@@ -23,6 +23,7 @@
   font-size :15px;
   font-weight :regular;
   text-decoration: none;
+  text-transform: capitalize;
 }
 
 .subtitleStyle {
