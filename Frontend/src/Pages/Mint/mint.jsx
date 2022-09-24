@@ -21,7 +21,7 @@ import s from './mint.module.css';
 import TresNft from '../../Components/Tres-Nft/tres-nft';
 
 // Redux actions
-import { getAllVisibleCauses } from '../../redux/actions'
+import { getAllVisibleCauses, POLYGON } from '../../redux/actions'
 
 import abi from "../../Utils/Constants/abi.json";
 import { ethers } from 'ethers';
@@ -37,6 +37,7 @@ export default function Mint() {
   const causes = useSelector(state => state.allVisibleCauses);
   const cause = causes.filter(contract => (contract.address === collectionContractAddress))[0];
   const state = false;
+  const red = useSelector(state => state?.chain.network);
 
   const [donateAll, setDonateAll] = useState(false);
   const [nftCount, setNftCount] = useState(1);
@@ -82,6 +83,9 @@ export default function Mint() {
     }
 
   }
+  const validaRed = () => {
+    return red !== POLYGON;
+  }
 
   const change = (number) => {
     if ((number < 0 && nftCount > 1) || (number > 0 && nftCount < 10)) {
@@ -94,7 +98,7 @@ export default function Mint() {
       <p className="bigTitle">Cause {cause?.title} Mint</p>
       <TresNft collectionContractAddress={collectionContractAddress} causes={causes}/>
       <hr/>
-      <p>Price per mint: {price} USD</p>
+      <p>Price per mint: {price} MATIC</p>
       <div className={checkContainer}>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check onChange={onCheck} type="checkbox" label="Donate All Profit" />
@@ -124,7 +128,7 @@ export default function Mint() {
           <Button onClick={() => change(-1)} variant="outline-secondary">-</Button>
           <Button onClick={() => change(+1)} variant="outline-secondary">+</Button>
         </InputGroup>
-        <Button onClick={mint} className="generalButton" variant="secondary" disabled={state}>Mint</Button>
+        <Button onClick={mint} className="generalButton" variant="secondary" disabled={state || validaRed()}>Mint</Button>
       </div>
       <br/>
       <div className={classname}>{msg}</div>

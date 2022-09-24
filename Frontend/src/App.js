@@ -43,7 +43,7 @@ function App() {
       <NavbarProject />
       <Routes>
         <Route exact path={ HOME } element={<Home />}/>
-        <Route exact path={ ADMIN_DASHBOARD } element={isAdmin ?  <AdminDashboard /> : <Navigate to="/" />}/>
+        <Route exact path={ ADMIN_DASHBOARD } element={isAdmin ?  <AdminDashboard /> : <Navigate to={USER_DASHBOARD} />}/>
         <Route exact path={ CAUSE } element={<Cause />}/>
         <Route exact path={ CAUSES } element={<Causes />}/>
         <Route exact path={ `${COLLECTION}/:collectionContractAddress` } element={<Collection />}/>

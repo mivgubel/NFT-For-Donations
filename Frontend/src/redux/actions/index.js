@@ -13,6 +13,8 @@ export const CHANGE_ERROR = 'CHANGE_ERROR';
 export const GET_ACTUAL_RED = 'GET_ACTUAL_RED';
 export const GET_USER_BALANCE = 'GET_USER_BALANCE';
 export const SET_SPINNER_STATUS = 'SET_SPINNER_STATUS';
+export const GET_USER_COLLECTION = 'GET_USER_COLLECTION';
+
 //ETHEREUM
 export const ETHEREUM = 'Ethereum';
 export const ETHEREUM_MAIN_TOKEN = 'ETH';
@@ -184,4 +186,14 @@ export const setConnectWalletSpinnerStatus = (status) => {
 
 export const getAdminWallets = () => {
   return ["0x7a4113bc06a8b9fa457cbbc07f48eddddfc5473f", "0x76d9995e68a44b786a665e5631d06fbbda047ee2"];
+}
+
+export const getMyCollection = async (userWallet) => { 
+  const userCollection = await axios.get(`https://solidarityback.herokuapp.com/user/${userWallet}`);
+  return  (dispatch) => {
+    dispatch({
+      type: GET_USER_COLLECTION,
+      payload : userCollection
+    });
+  }
 }

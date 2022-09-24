@@ -1,0 +1,68 @@
+.cardMinted {
+  display: flex;
+}
+
+.collectionContainer,
+.dashboardContainer {
+  display: flex;
+  flex-direction: row !important;
+  margin-top: 20px;
+}
+
+.collectionContainer{
+  flex-direction:column !important;
+  width: 100%;
+}
+
+.firstcard {
+  width: 100% !important;
+  display:flex;
+  flex-direction: row !important;
+  justify-content: space-around;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.secondCard {
+    margin-left: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+  margin : 20px;
+}
+
+.nftImage {
+  width: 100px;
+}
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+
+.descriptionStyle {
+  font-size: 16px;
+  font-family: 'Work Sans';
+  margin-top: 40px;
+  margin-bottom: 50px;
+  z-index: 2;
+  text-align: justify;
+}
+
+.buttonContainer{
+  display :flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.table {
+  width: 100%;
+}
+
+.button {
+  width: 100px;
+}
