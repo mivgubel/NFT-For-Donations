@@ -82,7 +82,7 @@ const AddCollectionModal = () => {
       }).catch(function (error){
         console.log(error);
           setClassName("alert alert-danger");
-          setMsg(JSON.stringify(error));
+          setMsg("The collection wasn`t created.");
       });
       } else if (
         /* Read more about handling dismissals below */
