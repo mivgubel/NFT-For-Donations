@@ -53,13 +53,14 @@ export default function Mint() {
 
   const mint = async () => {
     //TODO Implementar Mint
+    
     console.log("MINTEANDO....")
     try {
       const { ethereum } = window;
 			if (ethereum) {
 				const provider = new ethers.providers.Web3Provider(ethereum);
 				const signer = provider.getSigner();
-				const contract = new ethers.Contract("0xF188bAAe573dEa13B55f4Cb6fdDd55df8F7B7d88", abi.abi, signer);
+				const contract = new ethers.Contract("0x1ea5a1d9348897facf39f261f7c329c995de67bd", abi.abi, signer);
 
 				console.log("Going to pop wallet now to pay gas...");
         let price = nftCount * 0.001;
