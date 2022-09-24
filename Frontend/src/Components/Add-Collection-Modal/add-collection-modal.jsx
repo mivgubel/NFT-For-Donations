@@ -16,6 +16,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { postCollection } from '../../redux/actions';
+import Swal from 'sweetalert2';
 
 const AddCollectionModal = () => {
   const {container} = s;
@@ -49,18 +50,54 @@ const AddCollectionModal = () => {
       baseUri: baseUri
     }
     // postCollection(data);
-  //  // axios.post();
-    axios.post("https://solidarityback.herokuapp.com/adminDashboard",data).then(function(response){
-        console.log("respon: ",response.data);
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure to create this collection?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, create it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        cleanForm();
+        axios.post("https://solidarityback.herokuapp.com/adminDashboard",data).then(function(response){
         setClassName("alert alert-success");
         setMsg(JSON.stringify(response.data));
-        cleanForm();
         handleClose();
-    }).catch(function (error){
-      console.log(error);
-        setClassName("alert alert-danger");
-        setMsg(JSON.stringify(error));
-    });
+        Swal.fire(
+          'Created!',
+          'The Collection had been created successfully.',
+          'success'
+        )
+      }).catch(function (error){
+        console.log(error);
+          setClassName("alert alert-danger");
+          setMsg(JSON.stringify(error));
+      });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        handleClose();
+        cleanForm();
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'The collection wasnt created',
+          'error'
+        )
+      }
+    })
+  //  // axios.post();
+    
   }
 
   const cleanForm = () => {
@@ -73,7 +110,8 @@ const AddCollectionModal = () => {
     setMsg("");
     setClassName("");
   }
-  const validaCamposLlenos = () => {
+
+  const validateFilledFields = () => {
     return (
             nameCollection === "" ||
             symbol === "" || 
@@ -138,7 +176,7 @@ const AddCollectionModal = () => {
             <Form.Control type="text" placeholder="DD/MM/YYYY" id="uri" 
               value={baseUri} onChange={(e)=>setBaseUri(e.target.value)} />
           </FloatingLabel>
-          <Button type="submit" className="btn btn-primary" id="sumit" disabled={validaCamposLlenos()}>
+          <Button type="submit" className="btn btn-primary" id="sumit" disabled={validateFilledFields()}>
             Submit
           </Button>
           <Button variant="danger" onClick={handleClose}>
