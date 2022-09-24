@@ -167,12 +167,12 @@ export const getActualRed = (chainId) => {
 }
 
 export const setUserBalance = (payload) => {
-          return  (dispatch) => {
-            dispatch({
-                type: GET_USER_BALANCE,
-                payload
-              });      
-          }
+  return  (dispatch) => {
+    dispatch({
+        type: GET_USER_BALANCE,
+        payload
+      });      
+  }
 }
 
 export const setConnectWalletSpinnerStatus = (status) => {
@@ -188,12 +188,20 @@ export const getAdminWallets = () => {
   return ["0x7a4113bc06a8b9fa457cbbc07f48eddddfc5473f", "0x76d9995e68a44b786a665e5631d06fbbda047ee2"];
 }
 
-export const getMyCollection = async (userWallet) => { 
-  const userCollection = await axios.get(`https://solidarityback.herokuapp.com/user/${userWallet}`);
-  return  (dispatch) => {
-    dispatch({
-      type: GET_USER_COLLECTION,
-      payload : userCollection
-    });
+export const getMyCollection = (userWallet) => { 
+  try {
+    const route = `https://solidarityback.herokuapp.com/user/${userWallet}`;
+      return async  (dispatch) => {
+        console.log(route)
+        const collections = await axios.get(route);
+        dispatch({
+          type: GET_USER_COLLECTION,
+          payload : collections?.data.nfts
+        });
+      }
+    
+  } catch(error) {
+    console.log(error)
   }
+
 }

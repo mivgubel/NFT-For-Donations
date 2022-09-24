@@ -14,12 +14,15 @@ export default function UserDashboard() {
   const COLUMNS = ["Title", "Image", "Cost", "Yield", "Causes Profit", "User Profit" ];
   const dispatch = useDispatch();
   const wallet = useSelector(state => state.user.address);
+  const userCollection = useSelector(state => state.userCollection);
   useEffect(()=> {
     if (wallet) {
-      getMyCollection(wallet);
+      dispatch(getMyCollection(wallet));
     }
-  }, [dispatch]);
-  const userCollection = useSelector(state => state.userCollection);
+  }, [wallet, dispatch]);
+
+
+  console.log(userCollection)
   return(
     <div className={container}>
       <Card className={collectionContainer}>
@@ -40,14 +43,10 @@ export default function UserDashboard() {
               <td key={`${index}-count`}>{index + 1}</td>
               <td key={`${index}-title`}>{collection?.name}</td>
               <td key={`${index}-image`}><img className={nftImage} alt={collection?.name} src={collection.image}/></td>
-              <td className={buttonContainer} key={`${index}-actions`}>
-                <br/>
-                <NavLink key={`${index}-detailsLink`} className="nav-link" to={`${COLLECTION}/${collection.address}`} >
-                  <Button  className={button} key={`${index}-detailsButton`} variant="secondary">
-                    View All
-                  </Button>
-                </NavLink>
-              </td>
+              <td key={`${index}-cost`}>{0.001} MATIC</td>
+              <td key={`${index}-yield`}>{4}%</td>
+              <td key={`${index}-cause-profit`}>{0.001 * 0.02} MATIC</td>
+              <td key={`${index}-user-profit`}>{0.001 * 0.02} MATIC</td>
             </tr>
             ))}
           </tbody>

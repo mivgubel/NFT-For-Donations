@@ -45,7 +45,8 @@ const WalletConnectBtn = () => {
         method: 'eth_requestAccounts'
       })
       .then( result => {
-        getUserBalance(result.toString());
+        console.log(result)
+        getUserBalance(result[0]);
         dispatch(setConnectWalletSpinnerStatus(true));
         dispatch(getActualRed(window.ethereum.networkVersion));
       })
@@ -57,7 +58,7 @@ const WalletConnectBtn = () => {
   }
 
   const accountChangedHandler = (newAccount) => {
-    getUserBalance(newAccount.toString());
+    getUserBalance(newAccount[0]);
   }
 
   const getUserBalance = (address) => {
