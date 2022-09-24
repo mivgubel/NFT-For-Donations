@@ -20,3 +20,5 @@
   width: 100%;
   justify-content: space-evenly;
 }
+
+.title {text-transform: capitalize !important;}

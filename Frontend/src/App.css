@@ -42,6 +42,7 @@
   color : #3F75FF !important;
   font-weight : regular !important;
   font-family: 'Work Sans' !important;
+  text-transform: capitalize;
 }
 
 .generalButton { 
