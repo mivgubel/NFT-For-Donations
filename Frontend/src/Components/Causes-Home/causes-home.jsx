@@ -31,7 +31,7 @@ const CausesHome = () => {
         <h1 className={title}>Causes onboard</h1>
         <p>lorem ipsum dolor sit amet, consectetur adip</p>
         <div className={cardsContainer} >
-          {allCards}
+          {allCards.slice(0,3)}
         </div>
       </div>
     </div>

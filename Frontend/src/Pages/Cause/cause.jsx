@@ -18,28 +18,28 @@ import { getAllVisibleCauses } from '../../redux/actions'
 
 export default function Cause() {
   const { descriptionStyle, buttonContainer, container } = s;
-  const { id } = useParams();
+  const { collectionContractAddress } = useParams();
 
   //Dispatch
   const dispatch = useDispatch();
   useEffect(()=> {
     dispatch(getAllVisibleCauses());
-  }, [ dispatch, id ]);
+  }, [ dispatch, collectionContractAddress ]);
   const causes = useSelector(state => state.allVisibleCauses);
-  const { image, title, description } = causes[id - 1];
-
+  const cause = causes.filter(contract => (contract.address === collectionContractAddress))[0];
+  // const {  name, address } = cause;
   return(   
     <div className={container}>
-      <img src={image} alt={title}/>
-      <p className="title">{title}</p>
-      <p className={descriptionStyle}>{description}</p>
+      {/* <img src={image} alt={title}/> */}
+      <p className="title">{cause?.name}</p>
+      <p className={descriptionStyle}>{"description"}</p>
       <p className="title">Collection</p>
-      <TresNft id={id} causes={causes}/>
+      <TresNft key={collectionContractAddress} id={collectionContractAddress} causes={causes}/>
       <div className={buttonContainer}>
-        <NavLink className="nav-link" to={`${COLLECTION}/${id}`}>
+        <NavLink className="nav-link" to={`${COLLECTION}/${collectionContractAddress}`}>
           <Button className="generalButton" variant="primary">Full Collection</Button>
         </NavLink>
-        <MintButton id={id}/>
+        <MintButton id={collectionContractAddress}/>
         <NavLink className="nav-link" to={CAUSES}>
           <Button className="generalButton" variant="primary">All Causes</Button>
         </NavLink>

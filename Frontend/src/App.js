@@ -34,9 +34,9 @@ function App() {
         <Route exact path={ ADMIN_DASHBOARD } element={<AdminDashboard />}/>
         <Route exact path={ CAUSE } element={<Cause />}/>
         <Route exact path={ CAUSES } element={<Causes />}/>
-        <Route exact path={ `${COLLECTION}/:id` } element={<Collection />}/>
-        <Route exact path={ `${COLLECTION}/:id/${COLLECTION_ELEMENT}/:idElement` } element={<CollectionElement />}/>
-        <Route exact path={ `${MINT}/:id` } element={<Mint />}/>
+        <Route exact path={ `${COLLECTION}/:collectionContractAddress` } element={<Collection />}/>
+        <Route exact path={ `${COLLECTION}/:collectionContractAddress/${COLLECTION_ELEMENT}/:collectionContractElement` } element={<CollectionElement />}/>
+        <Route exact path={ `${MINT}/:collectionContractAddress` } element={<Mint />}/>
         <Route exact path={ USER_DASHBOARD } element={<UserDashboard />}/>
         <Route path="*" element={<Navigate to={ HOME } />}/>
       </Routes>

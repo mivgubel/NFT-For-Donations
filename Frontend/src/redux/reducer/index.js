@@ -1,4 +1,5 @@
 import {
+  CHANGE_ERROR,
   GET_ALL_CAUSES, GET_ALL_VISIBLE_CAUSES, HIDE_CAUSE, 
 } from '../actions'
 
@@ -7,11 +8,17 @@ import {
 
 const initialState = {
   allCauses: [],
-  allVisibleCauses: []
+  allVisibleCauses: [],
+  errorNewCollection : {}
 };
 
 function rootReducer( state = initialState, { type, payload } ) {
   switch ( type ) {
+    case CHANGE_ERROR:
+      return {
+        ...state,
+        errorNewCollection: payload,
+      };
       case GET_ALL_CAUSES:
           return {
             ...state,

@@ -8,7 +8,7 @@ import s from './tres-nft.module.css';
 
 //Constants
 
-const TresNft = ({causes, id}) => {
+const TresNft = ({causes, contractAddress}) => {
   const {collectionImage, container} = s;
   return(   
     <div className={container}>
@@ -16,8 +16,8 @@ const TresNft = ({causes, id}) => {
           causes.map( (cause, index) => {
             const collection = cause.collection;
             return(
-              <NavLink className="nav-link" to={`${COLLECTION}/${id}/${COLLECTION_ELEMENT}/${index + 1}`} >
-                <img className={collectionImage} key={index} src={collection[index].image} alt={`Img ${index + 1}`}/>
+              <NavLink key={index} className="nav-link" to={`${COLLECTION}/${contractAddress}/${COLLECTION_ELEMENT}/${index + 1}`} >
+                {/* <img className={collectionImage} key={index} src={collection[index].image} alt={`Img ${index + 1}`}/> */}
               </NavLink>
             );
           })

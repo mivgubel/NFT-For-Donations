@@ -1,6 +1,8 @@
 //React
 import React, { useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import {  useParams } from 'react-router-dom';
 //style
 import s from './add-collection-modal.module.css';
 
@@ -13,6 +15,7 @@ import Modal from 'react-bootstrap/Modal';
 
 import axios from "axios";
 import { FloatingLabel, Form } from 'react-bootstrap';
+import { postCollection } from '../../redux/actions';
 
 const AddCollectionModal = () => {
   const {container} = s;
@@ -23,9 +26,14 @@ const AddCollectionModal = () => {
   const [mintPrice, setMintPrice] = useState(0);
   const [fechaLanzamiento, setFechaLanzamiento] = useState("");
   const [baseUri, setBaseUri] = useState(""); 
-  const [msg, setMsg] = useState("");
-  const [className, setClassName] = useState("");
+  // const [msg, setMsg] = useState("");
+  // const [className, setClassName] = useState("");
   //const [isActive, setIsActive] = useState(false);
+  const dispatch = useDispatch();
+  const { errorClass, errorMessage } = useSelector(state => state.errorNewCollection);
+  useEffect(()=> {
+    
+  }, [dispatch]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -40,17 +48,17 @@ const AddCollectionModal = () => {
       fechaLanzamiento: fechaLanzamiento+":00-05:00",
       baseUri: baseUri
     }
-    
-   // axios.post();
-  axios.post("https://solidarityback.herokuapp.com/adminDashboard",data).then(function(response){
-      console.log("respon: ",response.data);
-      setClassName("alert alert-success");
-      setMsg(JSON.stringify(response.data));
-  }).catch(function (error){
-    console.log(error);
-      setClassName("alert alert-danger");
-      setMsg(JSON.stringify(error));
-  });
+    postCollection(data);
+  //  // axios.post();
+    axios.post("https://solidarityback.herokuapp.com/adminDashboard",data).then(function(response){
+        console.log("respon: ",response.data);
+        // setClassName("alert alert-success");
+        // setMsg(JSON.stringify(response.data));
+    }).catch(function (error){
+      console.log(error);
+        // setClassName("alert alert-danger");
+        // setMsg(JSON.stringify(error));
+    });
   }
   return(   
     <div className={container}>
@@ -63,7 +71,7 @@ const AddCollectionModal = () => {
         <Modal.Body>
           <Modal.Title>{"Create a new Collection"}</Modal.Title>
       <br />
-      <div id="msg" className={className}>{msg}</div>
+      <div id="msg" className={errorClass}>{errorMessage}</div>
       <form onSubmit={submitForm} >
           <FloatingLabel
           label="Collection Name:"

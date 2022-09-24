@@ -20,10 +20,10 @@ const MintButton = ({id}) => {
     dispatch(getAllVisibleCauses());
   }, [ dispatch, id ]);
   const causes = useSelector(state => state.allVisibleCauses);
-  const {state} = causes[id - 1];
+  // const {state} = causes[id - 1];
 
   return(   
-    <NavLink className={state === "Soon" ? "hide" : ""} to={`${MINT}/${id}`}>
+    <NavLink className={"state" === "Soon" ? "hide" : ""} to={`${MINT}/${id}`}>
       <Button className="generalButton" variant="primary">Mint NFT</Button>
     </NavLink>
   )

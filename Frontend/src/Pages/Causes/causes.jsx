@@ -24,17 +24,17 @@ export default function Causas() {
     <div>
       {
         causes.map(cause => {
-          const {id, image, title, description} = cause;
+          const {address, image, name, description} = cause;
           const {container, titleAndImage, imageStyle, descriptionStyle, info} = s;
           return (
-            <div key={id} className={container}>
+            <div key={address} className={container}>
               <div className={titleAndImage}>
-                <p className="title">{title}</p>
-                <img className={imageStyle} src={image} alt={title}/>
+                <p className="title">{name}</p>
+                {/* <img className={imageStyle} src={image} alt={name}/> */}
               </div>
               <div className={descriptionStyle}>
-                <p >{description.slice(0,300) + '...'}</p>
-                <NavLink className={info} to={`${CAUSES}/${id}`}>More Info</NavLink>
+                {/* <p >{description.slice(0,300) + '...'}</p> */}
+                <NavLink className={info} to={`${CAUSES}/${address}`}>More Info</NavLink>
               </div>
             </div>
           )
