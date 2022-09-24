@@ -3,6 +3,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from "react";
+import axios from "axios";
 
 //Style
 import s from "./admin-dashboard.module.css";
@@ -18,6 +19,7 @@ import { COLLECTION } from '../../Utils/Constants/Routes';
 
 // Redux actions
 import { getAllCauses, hideCause } from '../../redux/actions';
+
 
 
 export default function AdminDashboard() {

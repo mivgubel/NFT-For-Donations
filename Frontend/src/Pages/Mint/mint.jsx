@@ -23,6 +23,9 @@ import TresNft from '../../Components/Tres-Nft/tres-nft';
 // Redux actions
 import { getAllVisibleCauses } from '../../redux/actions'
 
+import abi from "../../Utils/Constants/abi.json";
+import { ethers } from 'ethers';
+
 export default function Mint() {
   const {container, checkContainer, info, mintDiv, counter, icon} = s;
   const { collectionContractAddress } = useParams();
@@ -37,6 +40,8 @@ export default function Mint() {
 
   const [donateAll, setDonateAll] = useState(false);
   const [nftCount, setNftCount] = useState(1);
+  const [classname, setClassname] = useState("");
+  const [msg, setMsg] = useState("");
 
   //TODO INTERACTUAR CON REDUX
   const totalNfts = cause?.max_supply;
@@ -47,9 +52,35 @@ export default function Mint() {
     setDonateAll(!donateAll);
   }
 
-  const mint = () => {
-    //TODO Implementar Mint
-    console.log("MINTEANDO....")
+  const mint = async () => {
+    try {
+      const { ethereum } = window;
+			if (ethereum) {
+				const provider = new ethers.providers.Web3Provider(ethereum);
+				const signer = provider.getSigner();
+				const contract = new ethers.Contract(collectionContractAddress, abi.abi, signer);
+
+				console.log("Going to pop wallet now to pay gas...");
+        let priceFinal = nftCount * price;
+				let tx = await contract.mint(nftCount, {
+					value: ethers.utils.parseEther(priceFinal.toString()),
+				});
+				// Wait for the transaction to be mined
+				const receipt = await tx.wait();
+
+				// Check if the transaction was successfully completed
+				if (receipt.status === 1) {
+          setClassname("alert alert-success");
+          setMsg("NFT Minted!");
+				} else {
+          setClassname("alert alert-danger");
+          setMsg("Transaction failed! Please try again");
+				}
+			}
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
   const change = (number) => {
@@ -95,6 +126,8 @@ export default function Mint() {
         </InputGroup>
         <Button onClick={mint} className="generalButton" variant="secondary" disabled={state}>Mint</Button>
       </div>
+      <br/>
+      <div className={classname}>{msg}</div>
     </div>
   )
 }

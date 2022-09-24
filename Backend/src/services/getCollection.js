@@ -23,7 +23,7 @@ const getCollection =  (req, res) => {
     method: 'GET',
     url: 'https://api.nftport.xyz/v0/nfts/'+contractAddress,
     params: {
-      chain: 'polygon',
+      chain: 'rinkeby',
       page_number: '1',
       page_size: '1',
       include: 'default',
