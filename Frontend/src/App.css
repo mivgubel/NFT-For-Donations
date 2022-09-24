@@ -43,6 +43,8 @@
   font-weight : regular !important;
   font-family: 'Work Sans' !important;
   text-transform: capitalize;
+  width: 200px;
+  text-align: center;
 }
 
 .generalButton { 
