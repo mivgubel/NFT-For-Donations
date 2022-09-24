@@ -73,6 +73,15 @@ const AddCollectionModal = () => {
     setMsg("");
     setClassName("");
   }
+  const validaCamposLlenos = () => {
+    return (
+            nameCollection === "" ||
+            symbol === "" || 
+            maxSupply === 0 ||
+            mintPrice === 0 ||
+            fechaLanzamiento === ""
+          ); 
+  }
 
   return(   
     <div className={container}>
@@ -129,7 +138,9 @@ const AddCollectionModal = () => {
             <Form.Control type="text" placeholder="DD/MM/YYYY" id="uri" 
               value={baseUri} onChange={(e)=>setBaseUri(e.target.value)} />
           </FloatingLabel>
-        <button type="submit" className="btn btn-primary" id="sumit">Submit</button>
+          <Button type="submit" className="btn btn-primary" id="sumit" disabled={validaCamposLlenos()}>
+            Submit
+          </Button>
           <Button variant="danger" onClick={handleClose}>
             Cancel
           </Button>
