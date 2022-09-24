@@ -6,7 +6,6 @@
 */
 require("dotenv").config();
 const axios = require("axios").default;
-console.log(process.env.APY_KEY)
 const getCollections = (req, res) => {
     var options = {
         method: 'GET',
