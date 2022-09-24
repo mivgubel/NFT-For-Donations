@@ -1,5 +1,5 @@
 //React
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 //web3
 import {ethers} from 'ethers';
@@ -10,6 +10,8 @@ import Spinner from 'react-bootstrap/Spinner';
 
 //style
 import s from './wallet-connect-btn.module.css';
+import { connectWallet, getActualRed, getUserBalance, setConnectWalletSpinnerStatus, setUserBalance } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const WalletConnectBtn = () => {
   const {buttonStyle} = s;
@@ -17,17 +19,25 @@ const WalletConnectBtn = () => {
   //States
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
-  const [userBalance, setUserBalance] = useState(null);
   const [connButtonText, setConnectButtonText] = useState('Connect Wallet');
-  const [red, setRed] = useState(null);
-  const [token, setToken] = useState(null);
-  const [spinner, setSpinner] = useState(false);
+
+  //redux
+  const dispatch = useDispatch();
+  const red = useSelector(state => state?.chain.network);
+  const token = useSelector(state => state?.chain.token);
+  const state = useSelector(state => state);
+  const userBalance = useSelector(state => state.user.userBalance);
+  const spinner = useSelector(state => state.connectWalletSpinner);
+  useEffect(()=> {
+    connectWalletHandler();
+  }, [dispatch, red]);
+
   const connectWalletHandler = () => {
+    dispatch(setConnectWalletSpinnerStatus(true));
     if (red) {
-      setRed(null);
       setConnectButtonText('Connect Wallet');
-      setUserBalance(null);
-      setSpinner(false);
+      setUserBalance({});
+      dispatch(setConnectWalletSpinnerStatus(false));
       return;
     }
     if (window.ethereum) {
@@ -35,14 +45,14 @@ const WalletConnectBtn = () => {
         method: 'eth_requestAccounts'
       })
       .then( result => {
-        setSpinner(true);
-        accountChangedHandler(result[0]);
-        actualChainWallet(window.ethereum.networkVersion);
-        setConnectButtonText('Disconnect');
+        getUserBalance(result.toString());
+        dispatch(setConnectWalletSpinnerStatus(true));
+        dispatch(getActualRed(window.ethereum.networkVersion));
       })
+      dispatch(setConnectWalletSpinnerStatus(false));
     } else {
       setErrorMessage('Install MetaMask');
-      setSpinner(false);
+      dispatch(setConnectWalletSpinnerStatus(false));
     }
   }
 
@@ -51,37 +61,17 @@ const WalletConnectBtn = () => {
   }
 
   const getUserBalance = (address) => {
+    let payload = {
+      userBalance : 0,
+      address
+    }
     window.ethereum.request({method: 'eth_getBalance', params : [address, 'latest']})
     .then(balance => {
-      setUserBalance(ethers.utils.formatEther(balance).slice(0,8));
-      setDefaultAccount(address);
-      setSpinner(false);
+      payload.userBalance = ethers.utils.formatEther(balance).slice(0,8);
+      dispatch(setConnectWalletSpinnerStatus(false));
+      dispatch(setUserBalance(payload));
     })
-  }
-
-
-  const actualChainWallet = (chainId) => {
-    localStorage.setItem("chain", chainId);
-    switch(chainId) {
-      //Ethereum
-      case '1':
-        setRed('Ethereum');
-        setToken('ETH');
-        break;
-      //Polygon
-      case '137':
-        setRed('Polygon');
-        setToken('Matic');
-        break;
-      //Optimism
-      case '10':
-        setRed('Optimism');
-        setToken('ETH');
-        break;
-      default:
-        setRed('Red No Valida');
-        break;
-    }
+    
   }
 
   //Re-render when you change wallet

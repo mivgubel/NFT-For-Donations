@@ -1,6 +1,7 @@
 import {
   CHANGE_ERROR,
-  GET_ALL_CAUSES, GET_ALL_VISIBLE_CAUSES, HIDE_CAUSE, 
+  GET_ACTUAL_RED,
+  GET_ALL_CAUSES, GET_ALL_VISIBLE_CAUSES, GET_USER_BALANCE, HIDE_CAUSE, SET_SPINNER_STATUS, 
 } from '../actions'
 
 
@@ -9,7 +10,10 @@ import {
 const initialState = {
   allCauses: [],
   allVisibleCauses: [],
-  errorNewCollection : {}
+  errorNewCollection : {},
+  chain : {},
+  connectWalletSpinner : false,
+  user : {}
 };
 
 function rootReducer( state = initialState, { type, payload } ) {
@@ -17,24 +21,40 @@ function rootReducer( state = initialState, { type, payload } ) {
     case CHANGE_ERROR:
       return {
         ...state,
-        errorNewCollection: payload,
+        errorNewCollection: payload
       };
       case GET_ALL_CAUSES:
           return {
             ...state,
-            allCauses: payload,
+            allCauses: payload
           };
       case GET_ALL_VISIBLE_CAUSES:
         return {
             ...state,
-            allVisibleCauses: payload,
+            allVisibleCauses: payload
+        };
+      case GET_ACTUAL_RED:
+        return {
+            ...state,
+            chain : payload
+        };
+      case GET_USER_BALANCE:
+        return {
+            ...state,
+            user : payload
         };
       case HIDE_CAUSE:
         return {
             ...state,
             allVisibleCauses: payload,
-            allCauses: payload,
+            allCauses: payload
         };
+      case SET_SPINNER_STATUS:
+        return {
+            ...state,
+            connectWalletSpinner: payload
+        };
+
       default:
           return state;
   };

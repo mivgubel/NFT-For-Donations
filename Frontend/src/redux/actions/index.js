@@ -1,15 +1,47 @@
 import axios from "axios";
+import { ethers } from "ethers";
 //TODO CAMBIAR POR FUNCIONALIDAD DE BACK
 import { CAUSES_INFO } from "../../Utils/Constants/causes";
 
 const HOST = "http://localhost";
 
-
+//Constants for reducer
 export const GET_ALL_CAUSES = 'GET_ALL_CAUSES';
 export const GET_ALL_VISIBLE_CAUSES = 'GET_ALL_VISIBLE_CAUSES';
 export const HIDE_CAUSE = 'HIDE_CAUSE';
 export const CHANGE_ERROR = 'CHANGE_ERROR';
+export const GET_ACTUAL_RED = 'GET_ACTUAL_RED';
+export const GET_USER_BALANCE = 'GET_USER_BALANCE';
+export const SET_SPINNER_STATUS = 'SET_SPINNER_STATUS';
+//ETHEREUM
+export const ETHEREUM = 'Ethereum';
+export const ETHEREUM_MAIN_TOKEN = 'ETH';
+export const ETHEREUM_CHAINID = '1';
+//POLIGON
+export const POLYGON = 'Polygon';
+export const POLYGON_MAIN_TOKEN = 'MATIC';
+export const POLYGON_CHAINID = '137';
 
+//OPTIMISM
+export const OPTIMISM = 'Optimism';
+export const OPTIMISM_MAIN_TOKEN = 'OPTIMISM';
+export const OPTIMISM_CHAINID = '10';
+
+//Constants
+export const INVALID_RED = 'Invalid Red';
+
+export const connectWallet = () => {
+    window.ethereum.request({
+      method: 'eth_requestAccounts'
+    })
+    .then( result => {
+      setConnectWalletSpinnerStatus(true);
+      // setUserBalance(result.toString());
+      getActualRed(window.ethereum.networkVersion);
+    })
+    setConnectWalletSpinnerStatus(false);
+
+}
 export const getAllVisibleCauses =  () => {
   return async (dispatch) => {
     try {
@@ -73,17 +105,16 @@ export const postCollection =  (data) => {
       errorClass : "",
       errorMessage : {}
     };
-  //   try {
-      axios.post("https://solidarityback.herokuapp.com/adminDashboard",data).then(function(response){
-        console.log("respon: ",response.data);
-        payload = {
-          errorClass : "alert alert-success",
-          errorMessage : JSON.stringify(response.data)
-        }
-        dispatch({
-          type: HIDE_CAUSE,
-          payload
-        });
+    axios.post("https://solidarityback.herokuapp.com/adminDashboard",data).then(function(response){
+      console.log("respon: ",response.data);
+      payload = {
+        errorClass : "alert alert-success",
+        errorMessage : JSON.stringify(response.data)
+      }
+      dispatch({
+        type: HIDE_CAUSE,
+        payload
+      });
     }).catch(function (error){
       console.log(error);
       payload = {
@@ -95,8 +126,62 @@ export const postCollection =  (data) => {
         payload
       });
     });
-
   }
 }
 
 
+export const getActualRed = (chainId) => {
+  let payload = {
+    network : "",
+    token : "",
+    chainId
+  }
+    switch(chainId) {
+      //Ethereum
+      case ETHEREUM_CHAINID:
+        payload.network = ETHEREUM;
+        payload.token = ETHEREUM_MAIN_TOKEN;
+        break;
+      //Polygon
+      case POLYGON_CHAINID:
+        payload.network = POLYGON;
+        payload.token = POLYGON_MAIN_TOKEN;
+        break;
+      //Optimism
+      case '10':
+        payload.network = OPTIMISM;
+        payload.token = OPTIMISM_MAIN_TOKEN;
+        break;
+      default:
+        payload.network = INVALID_RED;
+        break;
+    }
+  return  (dispatch) => {
+    dispatch({
+      type: GET_ACTUAL_RED,
+      payload
+    });
+  }
+}
+
+export const setUserBalance = (payload) => {
+          return  (dispatch) => {
+            dispatch({
+                type: GET_USER_BALANCE,
+                payload
+              });      
+          }
+}
+
+export const setConnectWalletSpinnerStatus = (status) => {
+  return  (dispatch) => {
+    dispatch({
+      type: SET_SPINNER_STATUS,
+      payload : status
+    });
+  }
+}
+
+export const getAdminWallets = () => {
+  return ["0x7a4113bc06a8b9fa457cbbc07f48eddddfc5473f", "0x76d9995e68a44b786a665e5631d06fbbda047ee2"];
+}

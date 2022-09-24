@@ -29,7 +29,7 @@ export default function AdminDashboard() {
   useEffect(()=> {
     dispatch(getAllCauses());
   }, [dispatch]);
-
+  
   const COLUMNS = ["Title", "Image", "Actions"];
   const [collectionId, setCollectionId] = useState("");
 

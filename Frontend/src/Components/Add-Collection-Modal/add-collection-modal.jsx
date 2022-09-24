@@ -31,7 +31,7 @@ const AddCollectionModal = () => {
   const [className, setClassName] = useState("");
   //const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
-  const { errorClass, errorMessage } = useSelector(state => state.errorNewCollection);
+  const wallet = useSelector(state => state.user.address);
   useEffect(()=> {
     
   }, [dispatch]);
@@ -47,7 +47,8 @@ const AddCollectionModal = () => {
       maxSupply: maxSupply,
       price: mintPrice,
       fechaLanzamiento: fechaLanzamiento+":00-05:00",
-      baseUri: baseUri
+      baseUri: baseUri,
+      wallet
     }
     // postCollection(data);
     const swalWithBootstrapButtons = Swal.mixin({
@@ -81,7 +82,7 @@ const AddCollectionModal = () => {
       }).catch(function (error){
         console.log(error);
           setClassName("alert alert-danger");
-          setMsg(JSON.stringify(error));
+          setMsg("The collection wasn`t created.");
       });
       } else if (
         /* Read more about handling dismissals below */
