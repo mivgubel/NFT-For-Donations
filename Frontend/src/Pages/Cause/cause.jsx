@@ -39,7 +39,7 @@ export default function Cause() {
         <NavLink className="nav-link" to={`${COLLECTION}/${collectionContractAddress}`}>
           <Button className="generalButton" variant="primary">Full Collection</Button>
         </NavLink>
-        <MintButton id={collectionContractAddress}/>
+        <MintButton collectionContractAddress={collectionContractAddress}/>
         <NavLink className="nav-link" to={CAUSES}>
           <Button className="generalButton" variant="primary">All Causes</Button>
         </NavLink>

@@ -8,7 +8,6 @@ import s from './card.module.css';
 
 const CauseCard = ({collectionContractAddress, image, name, max_supply, presale_mint_start}) => {
   const {container, imageContainer, imageStyle, stateLive, stateSoon, titleStyle, subtitleStyle} = s;
-  const [state, setState] = useState("Soon");
   const now = new Date();
   const validaLive = () => {
     return now >= new Date(presale_mint_start).getTime();

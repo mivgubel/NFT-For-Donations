@@ -13,17 +13,23 @@ import {  MINT } from '../../Utils/Constants/Routes';
 // Redux actions
 import { getAllVisibleCauses } from '../../redux/actions';
 
-const MintButton = ({id}) => {
+const MintButton = ({collectionContractAddress}) => {
   //Dispatch
   const dispatch = useDispatch();
   useEffect(()=> {
     dispatch(getAllVisibleCauses());
-  }, [ dispatch, id ]);
+  }, [ dispatch, collectionContractAddress ]);
   const causes = useSelector(state => state.allVisibleCauses);
+  const cause = causes.filter(contract => (contract.address === collectionContractAddress))[0];
+  const now = new Date();
+
+  const validaLive = () => {
+    return now >= new Date(cause?.presale_mint_start).getTime();
+  }
   // const {state} = causes[id - 1];
 
   return(   
-    <NavLink className={"state" === "Soon" ? "hide" : ""} to={`${MINT}/${id}`}>
+    <NavLink className={!validaLive() ? "hide" : ""} to={`${MINT}/${collectionContractAddress}`}>
       <Button className="generalButton" variant="primary">Mint NFT</Button>
     </NavLink>
   )
