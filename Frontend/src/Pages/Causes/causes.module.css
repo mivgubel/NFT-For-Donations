@@ -12,13 +12,15 @@
 
 .imageStyle{
   width: 200px;
+  height: 200px;
+  border-radius: 20px;
 }
 
 .descriptionStyle {
   width: 70%;
   text-align: justify;
   margin-right: 10px;
-  margin-top: 60px;
+  margin-top: 100px;
 }
 
 .info {

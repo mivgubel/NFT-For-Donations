@@ -42,15 +42,15 @@
   display: flex;
   z-index: 2;
   position: absolute;
-  left: 76%;
+  left: 66.5%;
   top: 20%;
   background: linear-gradient(125.31deg, #457AFF 0%, #429DFF 47.92%, #3FBAFF 100%);
-  width: 45px;
-  height: 20px;
+  width: 65px;
+  height: 40px;
   border-radius: 10px 0 0 10px;
   color: white;
   text-align: center;
-  font-size: 10px;
+  font-size: 15px;
   justify-content: center;
   align-items: center;
 }

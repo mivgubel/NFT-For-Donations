@@ -223,11 +223,11 @@ export const setConnectWalletSpinnerStatus = (status) => {
 export const getAdminWallets = () => {
   return [
     //Guillermo
-    "0x76d9995e68a44b786a665e5631d06fbbda047ee2",
+    "0x76d9995e68a44b786a665e5631d06fbbda047ee2".toLowerCase(),
     //Erik
-    "0x0e88AC34917a6BF5E36bFdc2C6C658E58078A1e6",
+    "0x0e88AC34917a6BF5E36bFdc2C6C658E58078A1e6".toLowerCase(),
     //Mike
-    "0x105f83C74aD66776e317ABa4AeC1FB392cCa7c37"
+    "0x105f83C74aD66776e317ABa4AeC1FB392cCa7c37".toLowerCase()
   ];
 }
 

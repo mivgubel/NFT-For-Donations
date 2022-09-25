@@ -15,12 +15,16 @@ const CauseCard = ({collectionContractAddress, image, name, max_supply, presale_
 
   return(   
     <div className={container}>
+      <NavLink className={titleStyle} to={`${CAUSES}/${collectionContractAddress}`}>
       <div className={imageContainer}>
         <img className={imageStyle} src={image} alt={name}/>
         <p className={validaLive() ? stateLive : stateSoon}>{validaLive() ? "Live" : "Soon"}</p>
       </div>
-      <NavLink className={titleStyle} to={`${CAUSES}/${collectionContractAddress}`}>{name}</NavLink>
+      
+        <p>{name}</p>
+      
       <h6 className={subtitleStyle}>Total Supply : {max_supply} NFTs</h6>
+      </NavLink>
     </div>
   )
 }
