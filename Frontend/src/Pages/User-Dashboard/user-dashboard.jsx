@@ -41,13 +41,14 @@ export default function UserDashboard() {
     let totalInvestment = 0;
     let totalProfit = 0;
     userCollectionNft.map(collection => {
+      console.log(collection)
       totalProfit += getProfit(collection.mint_price, collection.public_mint_start, collection.nfts.length);
       nftQuantity += collection.nfts.length;
       totalInvestment += collection.mint_price * collection.nfts.length;
     });
     setprofit({nftQuantity, totalProfit, totalInvestment});
   }
-
+  const imagesContracts = ["0x51710b84b3be56201b87bdf052c07ee9d334ddce", "0x2ead43c1d40ee4f642e9a558e781fd88e39b3209", "0x8c34e57d808a1c8a99a1a7fcc4d1ca6557c5e384"];
 
   useEffect(()=> {
     if (wallet) {
@@ -76,7 +77,7 @@ export default function UserDashboard() {
             <tr key={`${index}-tr`}>
               <td key={`${index}-count`}>{index + 1}</td>
               <td key={`${index}-title`}>{collection?.name}</td>
-              <td key={`${index}-image`}><img className={nftImage} alt={collection?.name} src={collection.file_url}/></td>
+              <td key={`${index}-image`}><img className={nftImage} alt={collection?.name} src={`../../../causa${imagesContracts.indexOf(collection?.address) + 1}.png`}/></td>
               <td key={`${index}-nfts`}>{collection?.nfts.length}</td>
               <td key={`${index}-cost`}>{collection?.mint_price} MATIC</td>
               <td key={`${index}-yield`}>{investmentYield * 100 }%</td>
