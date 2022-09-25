@@ -75,6 +75,7 @@ const WalletConnectBtn = () => {
 
   //Re-render when you change wallet
   window.ethereum.on('accountsChanged', accountChangedHandler);
+  window.ethereum.on('chainChanged',() => window.location.reload());
   
   return(  
           <Button 
