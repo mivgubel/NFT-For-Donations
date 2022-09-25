@@ -31,7 +31,6 @@ const WalletConnectBtn = () => {
   useEffect(()=> {
     connectWalletHandler();
   }, [dispatch, red]);
-  console.log(red)
   const connectWalletHandler = () => {
     dispatch(setConnectWalletSpinnerStatus(true));
     if (red) {
