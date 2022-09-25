@@ -20,7 +20,6 @@ export default function UserDashboard() {
   //Redux
   const dispatch = useDispatch();
   const wallet = useSelector(state => state.user.address);
-  const userCollection = useSelector(state => state.userCollection);
   const userCollectionNft = useSelector(state => state.userNftInCollection);
 
   const getDaysSinceMint = ( mintDate ) => {
@@ -56,7 +55,7 @@ export default function UserDashboard() {
       dispatch(getMyCollection(wallet));
       getProfitDate();
     }
-  }, [wallet, dispatch]);
+  }, [wallet, dispatch, userCollectionNft]);
 
   return(
     <div className={container}>
