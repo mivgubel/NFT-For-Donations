@@ -176,20 +176,20 @@ export const getActualRed = (chainId) => {
   }
     switch(chainId) {
       //Ethereum
-      case ETHEREUM_CHAINID:
-        payload.network = ETHEREUM;
-        payload.token = ETHEREUM_MAIN_TOKEN;
-        break;
+      // case ETHEREUM_CHAINID:
+      //   payload.network = ETHEREUM;
+      //   payload.token = ETHEREUM_MAIN_TOKEN;
+      //   break;
       //Polygon
       case POLYGON_CHAINID:
         payload.network = POLYGON;
         payload.token = POLYGON_MAIN_TOKEN;
         break;
       //Optimism
-      case '10':
-        payload.network = OPTIMISM;
-        payload.token = OPTIMISM_MAIN_TOKEN;
-        break;
+      // case '10':
+      //   payload.network = OPTIMISM;
+      //   payload.token = OPTIMISM_MAIN_TOKEN;
+      //   break;
       default:
         payload.network = INVALID_NETWORK;
         break;
