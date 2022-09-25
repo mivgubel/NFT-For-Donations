@@ -23,7 +23,7 @@ export default function Causas() {
   return (
     <div>
       {
-        causes.map(cause => {
+        causes.map((cause, index) => {
           const {address, image, name} = cause;
           const description = ` Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                 Donec vulputate quis lorem sed tristique. Vestibulum hendrerit vitae mi et tristique. Aliquam erat volutpat. 
@@ -39,7 +39,7 @@ export default function Causas() {
             <div key={address} className={container}>
               <div className={titleAndImage}>
                 <p className="title">{name}</p>
-                <img className={imageStyle} src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBSvZZp18wtEy_J_K_yP-lpeoN8y7llHa2tynzXYRY1PrRGovQ8qJdzhY7ePvkEslCHg&usqp=CAU"} alt={name}/>
+                <img className={imageStyle} src={`../../../causa${index + 1}.png`} alt={name}/>
               </div>
               <div className={descriptionStyle}>
                 <p >{description.slice(0,300) + '...'}</p>

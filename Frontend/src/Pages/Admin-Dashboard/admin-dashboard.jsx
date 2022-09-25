@@ -60,12 +60,12 @@ export default function AdminDashboard() {
             <tr key={`${index}-tr`}>
               <td key={`${index}-count`}>{index + 1}</td>
               <td key={`${index}-title`}>{cause?.name}</td>
-              <td key={`${index}-image`}><img className={nftImage} alt={cause?.name} src={cause.image}/></td>
+              <td key={`${index}-image`}><img className={nftImage} alt={cause?.name} src={`../../../causa${index + 1}.png`}/></td>
               <td className={buttonContainer} key={`${index}-actions`}>
-                <Button onClick={() => showCollection(cause.address)} className={button} key={`${index}-showButton`}  variant="primary">
+                {/* <Button onClick={() => showCollection(cause.address)} className={button} key={`${index}-showButton`}  variant="primary">
                   {cause.show ? "Hide" : "Show"}
-                </Button>
-                <br/>
+                </Button> */}
+                {/* <br/> */}
                 <NavLink key={`${index}-detailsLink`} className="nav-link" to={`${COLLECTION}/${cause.address}`} >
                   <Button  className={button} key={`${index}-detailsButton`} variant="secondary">
                     View All
