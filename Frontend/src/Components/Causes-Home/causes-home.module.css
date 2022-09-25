@@ -18,7 +18,10 @@
   flex-direction: column !important;
   margin: 5% 10% 0 10%;
 }
+.subtitle{
+  font-size: 24px;
 
+}
 .title {
   font-size: 60px;
   color : #3F75FF !important;

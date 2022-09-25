@@ -12,7 +12,7 @@ import CauseCard from '../Card/card';
 import { getAllVisibleCauses } from '../../redux/actions';
 
 const CausesHome = () => {
-  const {container, subContainer, title, cardsContainer} = s;
+  const {container, subContainer, title, subtitle, cardsContainer} = s;
 
   //Dispatch
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const CausesHome = () => {
     <div className={container}>
       <div className={subContainer}>
         <h1 className={title}>Causes onboard</h1>
-        <p>lorem ipsum dolor sit amet, consectetur adip</p>
+        <p className={subtitle}>We can't help everyone, but we can help someone.</p>
         <div className={cardsContainer} >
           {allCards.slice(0,3)}
         </div>
