@@ -44,7 +44,7 @@ export default function Cause() {
       <p className="title">{cause?.name}</p>
       <p className={descriptionStyle}>{description}</p>
       <p className="title">Collection</p>
-      <img className={collectionImage} src={`../../../NFT${imagesContracts.indexOf(collectionContractAddress) + 1}.png`} alt='nft'/>
+      <img className={collectionImage} src={`../../../causa${imagesContracts.indexOf(collectionContractAddress) + 1}.png`} alt='nft'/>
       {/* <TresNft key={collectionContractAddress} id={collectionContractAddress} causes={causes}/> */}
       <div className={buttonContainer}>
         {/* <NavLink className="nav-link" to={`${COLLECTION}/${collectionContractAddress}`}>

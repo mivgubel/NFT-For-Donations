@@ -127,7 +127,7 @@ export default function Mint() {
     <div className={container}>
       <p className="bigTitle">{cause?.name} Mint</p>
       {/* <TresNft collectionContractAddress={collectionContractAddress} causes={causes}/> */}
-      <img className={collectionImage} src={`../../../NFT${imagesContracts.indexOf(collectionContractAddress) + 1}.png`} alt='nft'/>
+      <img className={collectionImage} src={`../../../causa${imagesContracts.indexOf(collectionContractAddress) + 1}.png`} alt='nft'/>
       <hr/>
       <p>Price per mint: {price} MATIC</p>
       {/* <div className={checkContainer}>
