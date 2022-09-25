@@ -33,7 +33,7 @@ function App() {
   const dispatch = useDispatch();
   const wallet = useSelector(state => state.user.address);
   const adminWallets = getAdminWallets();
-  const isAdmin = adminWallets.includes(wallet.toLowerCase());
+  const isAdmin = adminWallets.includes(wallet?.toLowerCase());
 
   useEffect(()=> {
   }, [dispatch]);
