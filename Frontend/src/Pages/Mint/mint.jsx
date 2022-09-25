@@ -95,11 +95,11 @@ export default function Mint() {
   
   return(   
     <div className={container}>
-      <p className="bigTitle">Cause {cause?.title} Mint</p>
+      <p className="bigTitle">{cause?.name} Mint</p>
       <TresNft collectionContractAddress={collectionContractAddress} causes={causes}/>
       <hr/>
       <p>Price per mint: {price} MATIC</p>
-      <div className={checkContainer}>
+      {/* <div className={checkContainer}>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check onChange={onCheck} type="checkbox" label="Donate All Profit" />
         </Form.Group>
@@ -114,7 +114,7 @@ export default function Mint() {
         >
         <Button className={info}><BsFillInfoCircleFill className={icon}/></Button>
         </OverlayTrigger>
-      </div>
+      </div> */}
       
       <p>{minted + "/"  + totalNfts} Minted </p>
       <div className={mintDiv}>
