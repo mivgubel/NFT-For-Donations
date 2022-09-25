@@ -43,6 +43,9 @@ export default function Mint() {
   const [nftCount, setNftCount] = useState(1);
   const [classname, setClassname] = useState("");
   const [msg, setMsg] = useState("");
+  const [maxiSupply, setMaxiSupply] = useState(0);
+  //const [AvailableSupply, setAvailableSupply] = useState(0);
+  const [mintedSupply, setMintedSupply] = useState(0);
 
   //TODO INTERACTUAR CON REDUX
   const totalNfts = cause?.max_supply;
@@ -51,6 +54,28 @@ export default function Mint() {
 
   const onCheck = () => {
     setDonateAll(!donateAll);
+  }
+
+  const getSupplys = async() => {
+    try {
+      const { ethereum } = window;
+			if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+				const signer = provider.getSigner();
+				const contract = new ethers.Contract(collectionContractAddress, abi.abi, signer);
+
+        let max = await contract.maxSupply();
+        let minted = await contract.totalSupply();
+
+        console.log("mited "+minted);
+        
+        setMaxiSupply(max);
+        setMintedSupply(minted);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    
   }
 
   const mint = async () => {
@@ -68,11 +93,13 @@ export default function Mint() {
 				});
 				// Wait for the transaction to be mined
 				const receipt = await tx.wait();
-
 				// Check if the transaction was successfully completed
 				if (receipt.status === 1) {
           setClassname("alert alert-success");
-          setMsg("NFT Minted!");
+          setMsg("NFT Minted!, Wait a moment to udate the data");
+          setTimeout(() => {
+            window.location.reload(); 
+          }, 20000);
 				} else {
           setClassname("alert alert-danger");
           setMsg("Transaction failed! Please try again");
@@ -92,6 +119,10 @@ export default function Mint() {
       setNftCount(nftCount + number);
     }
   }
+
+  useEffect(()=>{
+    getSupplys();
+  },[]);
   
   return(   
     <div className={container}>
@@ -116,7 +147,7 @@ export default function Mint() {
         </OverlayTrigger>
       </div> */}
       
-      <p>{minted + "/"  + totalNfts} Minted </p>
+      <p>{mintedSupply + "/"  + maxiSupply} Minted </p>
       <div className={mintDiv}>
         <InputGroup className={counter}>
           <Form.Control
