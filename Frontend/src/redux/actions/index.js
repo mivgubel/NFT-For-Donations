@@ -226,6 +226,8 @@ export const getAdminWallets = () => {
     "0x76d9995e68a44b786a665e5631d06fbbda047ee2",
     //Erik
     "0x0e88AC34917a6BF5E36bFdc2C6C658E58078A1e6",
+    //Mike
+    "0x105f83C74aD66776e317ABa4AeC1FB392cCa7c37"
   ];
 }
 
