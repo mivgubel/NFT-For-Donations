@@ -10,6 +10,7 @@ import s from './tres-nft.module.css';
 
 const TresNft = ({causes, contractAddress}) => {
   const {collectionImage, container} = s;
+  const causasImage = ['../../../causa1.png'];
   return(   
     <div className={container}>
         {

@@ -13,7 +13,6 @@ import { getAllVisibleCauses } from '../../redux/actions';
 
 const CausesHome = () => {
   const {container, subContainer, title, subtitle, cardsContainer} = s;
-
   //Dispatch
   const dispatch = useDispatch();
   useEffect(()=> {
@@ -21,7 +20,7 @@ const CausesHome = () => {
   }, [ dispatch ]);
   const cards = useSelector(state => state.allVisibleCauses);
   const allCards = cards.map( ({address, image, name, max_supply, presale_mint_start}, index) => 
-    <CauseCard key={index} collectionContractAddress={address} image={image} name={name} max_supply={max_supply} presale_mint_start={presale_mint_start}/>
+    <CauseCard key={index} collectionContractAddress={address} image={`../../../causa${index + 1}.png`} name={name} max_supply={max_supply} presale_mint_start={presale_mint_start}/>
   );
 
   return(   
