@@ -21,6 +21,7 @@ export default function Collection() {
   const { collectionContractAddress } = useParams();
   const dispatch = useDispatch();
   useEffect(()=> {
+    
     dispatch(getAllVisibleCauses());
   }, [ dispatch ]);
   const causes = useSelector(state => state.allVisibleCauses);

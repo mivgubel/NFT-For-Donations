@@ -1,28 +1,63 @@
 import s from './user-dashboard.module.css';
 
 //Bootstap
-import { Button, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import { COLLECTION } from '../../Utils/Constants/Routes';
-import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMyCollection } from '../../redux/actions';
+import { getAllCollectionsWithNfts, getMyCollection } from '../../redux/actions';
 
 export default function UserDashboard() {
-  const {container, firstcard, secondCard,dashboardContainer, table, buttonContainer, nftImage, button, collectionContainer} = s;
-  const COLUMNS = ["Title", "Image", "Cost", "Yield", "Causes Profit", "User Profit" ];
+  const {container, firstcard, secondCard,dashboardContainer, table, nftImage, collectionContainer} = s;
+  const COLUMNS = ["Title", "Image", "Nfts minted", "Cost", "Yield", "Causes Profit", "User Profit" ];
+  const investmentYield = 0.04;
+
+  const [profit, setprofit] = useState({
+    nftQuantity : 0,
+    totalInvestment : 0,
+    totalProfit : 0
+  });
+  //Redux
   const dispatch = useDispatch();
   const wallet = useSelector(state => state.user.address);
   const userCollection = useSelector(state => state.userCollection);
+  const userCollectionNft = useSelector(state => state.userNftInCollection);
+
+  const getDaysSinceMint = ( mintDate ) => {
+    const daysBetweenDates = (new Date().getTime() - new Date(mintDate).getTime())/ (1000 * 60 * 60 * 24) - 20;
+    const years = daysBetweenDates / 365;
+    if (daysBetweenDates <= 0) {
+      return 0;
+    } else {
+      return years;
+    }
+  }
+
+  const getProfit = (mintPrice , dateFromMint, units) => {
+    return Math.round(mintPrice * investmentYield / 2 * getDaysSinceMint(dateFromMint) * units * 100000) / 100000
+  }
+
+  const getProfitDate = () => {
+    let nftQuantity = 0;
+    let totalInvestment = 0;
+    let totalProfit = 0;
+    userCollectionNft.map(collection => {
+      totalProfit += getProfit(collection.mint_price, collection.public_mint_start, collection.nfts.length);
+      nftQuantity += collection.nfts.length;
+      totalInvestment += collection.mint_price * collection.nfts.length;
+    });
+    setprofit({nftQuantity, totalProfit, totalInvestment});
+  }
+
+
   useEffect(()=> {
     if (wallet) {
+      dispatch(getAllCollectionsWithNfts(wallet));
       dispatch(getMyCollection(wallet));
+      getProfitDate();
     }
   }, [wallet, dispatch]);
 
-
-  console.log(userCollection)
   return(
     <div className={container}>
       <Card className={collectionContainer}>
@@ -38,15 +73,16 @@ export default function UserDashboard() {
             </tr>
           </thead>
           <tbody>
-            {userCollection.map((collection, index) => (
+            {userCollectionNft.map((collection, index) => (
             <tr key={`${index}-tr`}>
               <td key={`${index}-count`}>{index + 1}</td>
               <td key={`${index}-title`}>{collection?.name}</td>
-              <td key={`${index}-image`}><img className={nftImage} alt={collection?.name} src={collection.image}/></td>
-              <td key={`${index}-cost`}>{0.001} MATIC</td>
-              <td key={`${index}-yield`}>{4}%</td>
-              <td key={`${index}-cause-profit`}>{0.001 * 0.02} MATIC</td>
-              <td key={`${index}-user-profit`}>{0.001 * 0.02} MATIC</td>
+              <td key={`${index}-image`}><img className={nftImage} alt={collection?.name} src={collection.file_url}/></td>
+              <td key={`${index}-nfts`}>{collection?.nfts.length}</td>
+              <td key={`${index}-cost`}>{collection?.mint_price} MATIC</td>
+              <td key={`${index}-yield`}>{investmentYield * 100 }%</td>
+              <td key={`${index}-cause-profit`}>{getProfit(collection?.mint_price, collection?.public_mint_start,  collection?.nfts.length)} MATIC</td>
+              <td key={`${index}-user-profit`}>{getProfit(collection?.mint_price, collection?.public_mint_start,  collection?.nfts.length)} MATIC</td>
             </tr>
             ))}
           </tbody>
@@ -57,9 +93,9 @@ export default function UserDashboard() {
           <div>
             <h3> Your Solidarity Causes Support</h3>
             <div>
-              <h1>7</h1>
-              <h3>Total Colections</h3>
-              <h1>7</h1>
+              <h1>{userCollectionNft.length}</h1>
+              <h3>Total Collections</h3>
+              <h1>{profit.nftQuantity}</h1>
               <h3>Total NFT Minted</h3>
             </div>
           </div>
@@ -67,24 +103,31 @@ export default function UserDashboard() {
             <h1>Projections</h1>
             <br/>
             <div>
-              <p>Total investment: $1000</p>
+              <p>Total investment:</p>
+              <b>{profit.totalInvestment} MATIC</b>
               <hr/>
-              <p>Actual Average Yield: 5%</p>
+              <p>Actual Average Yield:</p>
+              <b>{investmentYield * 100}%</b>
               <hr/>
-              <p>Actual Average Yield destined to help : 4%</p>
+              <p>Yield destined to help:</p>
+              <b>{investmentYield * 100 / 2}%</b>
               <hr/>
-              <p>Actual Average Yield profit for user: 1%</p>
+              <p>Yield profit for user:</p>
+              <b>{investmentYield * 100 / 2}%</b>
             </div>
           </div>
         </Card >
         <Card className={secondCard}>
           <h2>Profits</h2>
           <hr/>
-          <p>Actual Total Profit: $100</p>
+          <p>Actual Total Profit:</p>
+          <b> {profit.totalProfit} MATIC</b>
           <hr/>
-          <p>Actual Total Profit to help: $80</p>
+          <p>Actual Total Profit to help:</p>
+          <b>{profit.totalProfit / 2} MATIC</b>
           <hr/>
-          <p>Actual Total Profit for user: $20</p>
+          <p>Actual Total Profit for user: </p>
+          <b>{profit.totalProfit / 2} MATIC</b>
         </Card>
     </div>   
     </div>

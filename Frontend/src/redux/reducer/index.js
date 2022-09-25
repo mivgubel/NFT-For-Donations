@@ -1,7 +1,7 @@
 import {
   CHANGE_ERROR,
   GET_ACTUAL_RED,
-  GET_ALL_CAUSES, GET_ALL_VISIBLE_CAUSES, GET_USER_BALANCE, GET_USER_COLLECTION, HIDE_CAUSE, SET_SPINNER_STATUS, 
+  GET_ALL_CAUSES, GET_ALL_VISIBLE_CAUSES, GET_USER_BALANCE, GET_USER_COLLECTION, GET_USER_NFTS_COLLECTION, HIDE_CAUSE, SET_SPINNER_STATUS, 
 } from '../actions'
 
 const initialState = {
@@ -11,7 +11,8 @@ const initialState = {
   chain : {},
   connectWalletSpinner : false,
   user : {},
-  userCollection : []
+  userCollection : [],
+  userNftInCollection : []
 };
 
 function rootReducer( state = initialState, { type, payload } ) {
@@ -35,6 +36,11 @@ function rootReducer( state = initialState, { type, payload } ) {
         return {
             ...state,
             chain : payload
+        };
+      case GET_USER_NFTS_COLLECTION:
+        return {
+            ...state,
+            userNftInCollection : payload
         };
       case GET_USER_BALANCE:
         return {

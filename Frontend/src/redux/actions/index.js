@@ -14,6 +14,7 @@ export const GET_ACTUAL_RED = 'GET_ACTUAL_RED';
 export const GET_USER_BALANCE = 'GET_USER_BALANCE';
 export const SET_SPINNER_STATUS = 'SET_SPINNER_STATUS';
 export const GET_USER_COLLECTION = 'GET_USER_COLLECTION';
+export const GET_USER_NFTS_COLLECTION = 'GET_USER_NFTS_COLLECTION';
 
 //ETHEREUM
 export const ETHEREUM = 'Ethereum';
@@ -60,6 +61,41 @@ export const getAllVisibleCauses =  () => {
     } catch(error) {
       console.log(error.message);
     }
+  }
+}
+
+export const getAllCollectionsWithNfts =  (userWallet) => {
+  try {
+    const causesRoute = `https://solidarityback.herokuapp.com/`;
+    const userNftRoute = `https://solidarityback.herokuapp.com/user/${userWallet}`;
+    return async  (dispatch) => {
+      let causes = await axios.get(causesRoute);
+      causes = causes?.data?.contracts;
+      let userNft = await axios.get(userNftRoute);
+      userNft = userNft?.data?.nfts;
+      let causesArr = [];
+      for (let i = 0; i < causes.length; i++) {
+        const nfts = userNft.filter(nft => causes[i].address === nft.contract_address);
+        let causeObj = {
+            address : causes[i].address,
+            name : causes[i].name,
+            mint_price : causes[i].mint_price,
+            symbol : causes[i].symbol,
+            public_mint_start : causes[i].public_mint_start,
+            nfts 
+        }
+        if(nfts && nfts.length > 0) {
+          causesArr.push(causeObj);
+        }
+      }
+        dispatch({
+          type: GET_USER_NFTS_COLLECTION,
+          payload : causesArr
+        });
+      
+    }
+  } catch (error) {
+    console.log(error)
   }
 }
 
@@ -192,7 +228,6 @@ export const getMyCollection = (userWallet) => {
   try {
     const route = `https://solidarityback.herokuapp.com/user/${userWallet}`;
       return async  (dispatch) => {
-        console.log(route)
         const collections = await axios.get(route);
         dispatch({
           type: GET_USER_COLLECTION,

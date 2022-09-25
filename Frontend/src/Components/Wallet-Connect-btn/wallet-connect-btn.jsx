@@ -45,7 +45,6 @@ const WalletConnectBtn = () => {
         method: 'eth_requestAccounts'
       })
       .then( result => {
-        console.log(result)
         getUserBalance(result[0]);
         dispatch(setConnectWalletSpinnerStatus(true));
         dispatch(getActualRed(window.ethereum.networkVersion));
@@ -68,7 +67,7 @@ const WalletConnectBtn = () => {
     }
     window.ethereum.request({method: 'eth_getBalance', params : [address, 'latest']})
     .then(balance => {
-      payload.userBalance = ethers.utils.formatEther(balance).slice(0,8);
+      payload.userBalance = ethers.utils.formatEther(balance).slice(0,6);
       dispatch(setConnectWalletSpinnerStatus(false));
       dispatch(setUserBalance(payload));
     })
