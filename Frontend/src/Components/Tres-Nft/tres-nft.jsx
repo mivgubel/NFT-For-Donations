@@ -17,9 +17,10 @@ const TresNft = ({causes, contractAddress}) => {
           causes.map( (cause, index) => {
             const collection = cause.collection;
             return(
-              <NavLink key={index} className="nav-link" to={`${COLLECTION}/${contractAddress}/${COLLECTION_ELEMENT}/${index + 1}`} >
-                {/* <img className={collectionImage} key={index} src={collection[index].image} alt={`Img ${index + 1}`}/> */}
-              </NavLink>
+              // <NavLink key={index} className="nav-link" to={`${COLLECTION}/${contractAddress}/${COLLECTION_ELEMENT}/${index + 1}`} >
+                // <img className={collectionImage} key={index} src={collection[index].image} alt={`Img ${index + 1}`}/>
+                <img className={collectionImage} key={index} src={collection[index].image} alt={`Img ${index + 1}`}/>
+              // </NavLink>
             );
           })
         }

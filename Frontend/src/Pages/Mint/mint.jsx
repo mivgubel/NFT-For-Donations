@@ -27,7 +27,7 @@ import abi from "../../Utils/Constants/abi.json";
 import { ethers } from 'ethers';
 
 export default function Mint() {
-  const {container, checkContainer, info, mintDiv, counter, icon} = s;
+  const {container, checkContainer, info, mintDiv, counter, icon, collectionImage} = s;
   const { collectionContractAddress } = useParams();
   //Dispatch
   const dispatch = useDispatch();
@@ -48,9 +48,8 @@ export default function Mint() {
   const [mintedSupply, setMintedSupply] = useState(0);
 
   //TODO INTERACTUAR CON REDUX
-  const totalNfts = cause?.max_supply;
   const price = cause?.presale_mint_price;
-  const minted = 500;
+  const imagesContracts = ["0x51710b84b3be56201b87bdf052c07ee9d334ddce", "0x2ead43c1d40ee4f642e9a558e781fd88e39b3209", "0x8c34e57d808a1c8a99a1a7fcc4d1ca6557c5e384"];
 
   const onCheck = () => {
     setDonateAll(!donateAll);
@@ -127,7 +126,8 @@ export default function Mint() {
   return(   
     <div className={container}>
       <p className="bigTitle">{cause?.name} Mint</p>
-      <TresNft collectionContractAddress={collectionContractAddress} causes={causes}/>
+      {/* <TresNft collectionContractAddress={collectionContractAddress} causes={causes}/> */}
+      <img className={collectionImage} src={`../../../NFT${imagesContracts.indexOf(collectionContractAddress) + 1}.png`} alt='nft'/>
       <hr/>
       <p>Price per mint: {price} MATIC</p>
       {/* <div className={checkContainer}>

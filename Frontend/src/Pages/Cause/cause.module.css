@@ -22,3 +22,7 @@
 }
 
 .title {text-transform: capitalize !important;}
+
+.collectionImage {
+  width: 300px;
+}
