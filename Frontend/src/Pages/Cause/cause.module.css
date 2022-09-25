@@ -13,6 +13,7 @@
   margin-top: 60px;
 }
 
+.buttonContainerCenter,
 .buttonContainer{
   display: flex;
   flex-direction: row;
@@ -25,4 +26,8 @@
 
 .collectionImage {
   width: 300px;
+}
+
+.buttonContainerCenter {
+  justify-content: center;
 }
