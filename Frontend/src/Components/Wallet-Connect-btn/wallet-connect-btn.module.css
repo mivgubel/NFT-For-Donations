@@ -1,5 +1,10 @@
-
+.buttonRed,
 .buttonStyle {
   height: 40px !important;
   border-radius: 200px;
+}
+
+.buttonRed {
+  background-color: rgba(78, 75, 75, 0.788);
+  color : white;
 }

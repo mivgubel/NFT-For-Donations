@@ -10,11 +10,11 @@ import Spinner from 'react-bootstrap/Spinner';
 
 //style
 import s from './wallet-connect-btn.module.css';
-import { connectWallet, getActualRed, getUserBalance, setConnectWalletSpinnerStatus, setUserBalance } from '../../redux/actions';
+import { connectWallet, getActualRed, getUserBalance, INVALID_NETWORK, setConnectWalletSpinnerStatus, setUserBalance } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const WalletConnectBtn = () => {
-  const {buttonStyle} = s;
+  const {buttonStyle, buttonRed} = s;
 
   //States
   const [errorMessage, setErrorMessage] = useState(null);
@@ -31,7 +31,7 @@ const WalletConnectBtn = () => {
   useEffect(()=> {
     connectWalletHandler();
   }, [dispatch, red]);
-
+  console.log(red)
   const connectWalletHandler = () => {
     dispatch(setConnectWalletSpinnerStatus(true));
     if (red) {
@@ -79,15 +79,15 @@ const WalletConnectBtn = () => {
   
   return(  
           <Button 
-          className={buttonStyle}
+          className={red !== INVALID_NETWORK ? buttonStyle : buttonRed}
           variant="light"
           onClick={connectWalletHandler}>
               <div className={spinner ? "" : "hide"} >
                 <Spinner animation="border" variant="info" />
               </div>
               <p className={red ? "hide" : ""}>{connButtonText}</p>
-              <p className={red !== "Red No Valida" && userBalance ? "" : "hide"}>{userBalance + ' ' + token}</p>
-              <p className={red === "Red No Valida" && userBalance ? "" : "hide"}>{ red }</p>
+              <p className={red !== INVALID_NETWORK && userBalance ? "" : "hide"}>{userBalance + ' ' + token}</p>
+              <p className={red === INVALID_NETWORK && userBalance ? "" : "hide"}>{ red }</p>
           </Button>
           )
 }

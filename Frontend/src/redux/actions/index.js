@@ -31,7 +31,7 @@ export const OPTIMISM_MAIN_TOKEN = 'OPTIMISM';
 export const OPTIMISM_CHAINID = '10';
 
 //Constants
-export const INVALID_RED = 'Invalid Red';
+export const INVALID_NETWORK = 'INVALID NETWORK';
 
 export const connectWallet = () => {
     window.ethereum.request({
@@ -191,7 +191,7 @@ export const getActualRed = (chainId) => {
         payload.token = OPTIMISM_MAIN_TOKEN;
         break;
       default:
-        payload.network = INVALID_RED;
+        payload.network = INVALID_NETWORK;
         break;
     }
   return  (dispatch) => {
